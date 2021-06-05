@@ -1,0 +1,70 @@
+﻿@model List<MvcAuth.Models.Post_Reply_Tbl>
+@{
+    ViewBag.Title = "DetailsPost";
+}
+
+<hr />
+<a href="@Url.Action("Navigation","Students")" class="btn-link" style="padding:10px">Back To Posts</a>
+<hr />
+<h2>Details Post</h2>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a>
+            <span class="glyphicon glyphicon-user"></span>
+            @ViewBag.name
+        </a>
+        <p>
+            <span class="glyphicon glyphicon-time"></span>
+            @ViewBag.date
+        </p>
+    </div>
+    <div class="panel-body text-center h3">
+        @Html.Raw(ViewBag.content)
+
+    </div>
+    <div class="panel-footer">
+        @using (Html.BeginForm("Replys", "Students", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.TextBox("ReplyContent", null, new
+       {
+           @class = "form-control",
+           style = "float:left;margin-right:10px;min-width:90%;",
+          placeholder = "Here, You Can Write Your Reply ..."
+       })
+        <div>
+            @Html.ValidationMessage("ReplyContent", new { @class = "text-danger" })
+        </div>
+        <div>
+            <input type="submit" name="name" class="btn btn-success" value="Reply" />
+        </div>
+            <br />
+
+        }
+        @if (Model.Count == 0 )
+        {
+            <br />
+            <div class="panel panel-default">
+                <div class="panel-body text-center">
+                    <h3>No Replys</h3>
+                </div>
+            </div>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <br />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @item.StudentTbl.St_Name
+                    </div>
+                    <div class="panel-body text-center">
+                        @item.Reply_Content
+                    </div>
+                </div>
+            }
+
+        }
+    </div>
+</div>

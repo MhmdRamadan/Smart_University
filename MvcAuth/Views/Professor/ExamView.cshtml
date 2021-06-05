@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MvcAuth.Models.QuestionsTbl>
+
+@{
+    ViewBag.Title = "Exam View";
+}
+<br />
+<h3 class="text-center">@ViewBag.Ex_Name</h3>
+<br /> 
+<hr />
+<br />
+<div class="container text-center">
+
+    <div class="col-md-10">
+        @if (Model.Count() == 0)
+        {
+            <h1>No Qutstion Added</h1>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        @Html.DisplayFor(modelItem => item.Question)
+                    </div>
+                    <div class="panel-body">
+                        @Html.RadioButton($"R{item.Question_ID}", @Html.DisplayFor(modelItem => item.First_Choice))
+                        @Html.DisplayFor(modelItem => item.First_Choice)
+                        <br />
+                        @Html.RadioButton($"R{item.Question_ID}", @Html.DisplayFor(modelItem => item.Second_Choice))
+                        @Html.DisplayFor(modelItem => item.Second_Choice)
+                        <br />
+                        @Html.RadioButton($"R{item.Question_ID}", @Html.DisplayFor(modelItem => item.Third_Choice))
+                        @Html.DisplayFor(modelItem => item.Third_Choice)
+                        <br />
+                        @Html.RadioButton($"R{item.Question_ID}", @Html.DisplayFor(modelItem => item.Fourth_Choice))
+                        @Html.DisplayFor(modelItem => item.Fourth_Choice)
+                    </div>
+                    <div class="panel-footer text-success text-center">
+                        <table style="width:100%">
+                            <tr>
+                                <td> @Html.DisplayFor(modelItem => item.Correct_Choice) </td>
+                                <td> Correct Answer </td>
+                            </tr>
+
+                            <tr>
+                                <td> @Html.DisplayFor(modelItem => item.Degree) </td>
+                                <td> Degree </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            }
+        }
+    </div>
+
+</div>

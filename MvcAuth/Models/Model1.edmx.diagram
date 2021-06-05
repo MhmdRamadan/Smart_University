@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8de43517bb4941d6b03c70e45b6fbdd2" Name="Diagram1">
+        <EntityTypeShape EntityType="UniversityDBModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.AdminTbl" Width="1.5" PointX="10.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.AspNetRole" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.AspNetUserClaim" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.AspNetUserLogin" Width="1.5" PointX="10.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.AspNetUser" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Attendtbl" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.CourseTbl" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.DepartmentTbl" Width="1.5" PointX="1.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.EventTbl" Width="1.5" PointX="13" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Exam_Result_Tbl" Width="1.5" PointX="8.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.ExamTbl" Width="1.5" PointX="6" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.MapTbl" Width="1.5" PointX="13" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.NewsTbl" Width="1.5" PointX="13" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.ParkingTbl" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Post_Reply_Tbl" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Post_Reply_Tbls" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.PostTbl" Width="1.5" PointX="6" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Prof_Course_Tbl" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Prof_Lecture_TBL" Width="1.5" PointX="3" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.Prof_Video_TBL" Width="1.5" PointX="3" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.ProfessorTbl" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.QrTbl" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.QuestionsTbl" Width="1.5" PointX="8.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.RegisterCoursesTbl" Width="1.5" PointX="6" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.StudentTbl" Width="1.5" PointX="3.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityDBModel.sysdiagram" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="UniversityDBModel.FK_EventTbl_AdminTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_MapTbl_AdminTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_NewsTbl_AdminTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Attendtbl_CourseTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Attendtbl_StudentTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_ExamTbl_CourseTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Prof_Course_Tbl_CourseTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Prof_Lecture_TBL_CourseTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Prof_Video_TBL_CourseTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_QrTbl_CourseTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_RegisterCoursesTbl_CourseTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_StudentTbl_DepartmentTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Exam_Result_Tbl_ExamTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Exam_Result_Tbl_StudentTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_ExamTbl_ProfessorTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_QuestionsTbl_ExamTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Post_Reply_Tbl_PostTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Post_Reply_Tbl_StudentTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_PostTbl_StudentTbl1" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_Prof_Course_Tbl_ProfessorTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_QrTbl_ProfessorTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.FK_RegisterCoursesTbl_StudentTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityDBModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

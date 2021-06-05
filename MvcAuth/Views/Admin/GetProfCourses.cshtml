@@ -1,0 +1,41 @@
+﻿
+@model IEnumerable<MvcAuth.Models.Prof_Course_Tbl>
+<div class="row d-flex justify-content-center">
+   
+        <table class="table table-striped table-hover table-bordered" >
+            <tr>
+
+                <th>
+                    <label>Professor name</label>
+                </th>
+                <th>
+                    <label>Course name</label>
+                </th>
+                <th><label>Options</label></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ProfessorTbl.Prof_Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseTbl.Course_Name)
+            </td>
+            <td>
+
+
+                @Html.ActionLink("Delete", "DeleteProfCourse", new { item.ID})
+
+            </td>
+
+        </tr>}
+
+        </table>
+
+
+    </div>

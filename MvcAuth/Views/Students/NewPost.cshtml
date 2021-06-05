@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "New Post";
+}
+<hr />
+<a href="@Url.Action("Navigation","Students")" class="btn-link" style="padding:10px">Back To Posts</a>
+<hr />
+<h2> Add New Post</h2>
+<hr />
+@using (Html.BeginForm("NewPost", "Students", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.TextArea("PostContent".Replace("\n", "<br/>"), new
+        {
+            @class = "form-control",
+            style = "overflow:auto;resize:none;min-width:100%",
+            rows = "5",
+            placeholder = "Here, You Can Write Your Post ...",
+
+        })
+    @Html.ValidationMessage("PostContent", new { @class = "text-danger" })
+    <br />
+    <input type="submit" name="name" class="btn btn-success pull-right" value="Create New Post" />
+    <br />
+
+}

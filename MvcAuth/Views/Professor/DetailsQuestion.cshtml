@@ -1,0 +1,92 @@
+﻿@model MvcAuth.Models.QuestionsTbl
+
+@{
+    ViewBag.Title = "DetailsQuestion";
+}
+
+<h2>DetailsQuestion</h2>
+
+<div>
+    <h4>QuestionsTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ex_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamTbl.Ex_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Question_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Question_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Question)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Question)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.First_Choice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.First_Choice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Second_Choice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Second_Choice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Third_Choice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Third_Choice)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fourth_Choice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fourth_Choice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Degree)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Degree)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Correct_Choice)
+        </dt>
+
+        <dd class="text-success">
+            @Html.DisplayFor(model => model.Correct_Choice)
+        </dd>
+
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "QuestionsManagment")
+</p>

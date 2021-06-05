@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MvcAuth.Controllers.CourseTrue>
+
+@{
+    ViewBag.Title = "CourseStudents";
+}
+
+<h2>Course Students</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentCourse)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentCourse)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MvcAuth.Models.PostTbl>
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<div class="container">
+    <div class="col-md-3 text-center">
+        <a href="@Url.Action("Index","Students")" class="btn btn-block btn-default" style="padding:10px">Home</a>
+        <a href="@Url.Action("Courses","Students")" class="btn btn-block btn-default" style="padding:10px">My Courses</a>
+        <a href="@Url.Action("Absence","Students")" class="btn btn-block btn-default" style="padding:10px">Attendance</a>
+        <a href="@Url.Action("Index","Chat")" class="btn btn-block btn-default" style="padding:10px">Chat With Us</a>
+        <a href="@Url.Action("videos","Students")" class="btn btn-block btn-default" style="padding:10px">Lectures videos</a>
+        <a href="@Url.Action("Lectures","Students")" class="btn btn-block btn-default" style="padding:10px">Lectures pdf</a>
+        <a href="@Url.Action("AvaliableExam","Students")" class="btn btn-block btn-default" style="padding:10px">Avaliable Exam</a>
+        <a href="@Url.Action("ExamResult","Students")" class="btn btn-block btn-default" style="padding:10px">Exam Result</a>
+
+    </div>
+    <div class="col-md-9">
+        @if (Model.Count() <= 0)
+        {
+            <div class="text-center">
+                <p class="h3 text-danger">No Posts</p>
+                <a href="@Url.Action("NewPost","Students")" class="btn btn-default">Create First Post</a>
+            </div>
+        }
+        else
+        {
+            <hr />
+            <div class="text-center">
+                <a href="@Url.Action("NewPost","Students")" class="btn btn-success btn-lg btn-block">Create New Post</a>
+            </div>
+            <br />
+            foreach (var i in Model)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a>
+                            <span class="glyphicon glyphicon-user"></span>
+                            @Html.DisplayFor(a => i.StudentTbl.St_Name)
+                        </a>
+                        <p>
+                            <span class="glyphicon glyphicon-time"></span>
+                            @Html.DisplayFor(a => i.Post_Date)
+                        </p>
+                        @if (i.St_ID == Convert.ToInt32(Session["StudentID"]))
+                        {
+                            <a href="@Url.Action("DeletePost","Students",new { id = i.Post_ID})" onclick="DeletePost()" style="position:absolute; margin-top:-50px;margin-left:780px">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                        }
+                    </div>
+                    <div class="panel-body text-center h3">
+                        @Html.Raw(i.Post_Content.Replace("<br/>", "\r\n"))
+
+                    </div>
+                    <div class="panel-footer">
+                        <a href="@Url.Action("Replys","Students" , new { id=i.Post_ID})"
+                           class="btn btn-default btn-block">
+                            <span class="glyphicon glyphicon-comment"></span>
+                            View details and Replys
+                        </a>
+                    </div>
+                </div>
+                <hr />
+            }
+        }
+
+    </div>
+</div>

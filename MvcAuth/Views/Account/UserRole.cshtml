@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.title = "UserRole";
+
+}
+
+<h2>Accept professors requests!</h2>
+@using (Html.BeginForm("AssignUserToRole", "Account"))
+{
+<table>
+    <tr>
+        <td>Username </td>
+        <td>@Html.DropDownList("UserName", ViewBag.Users as SelectList, new { @class = "form-control" })</td>
+    </tr>
+   
+    <tr></tr>
+    <tr>
+        <td></td>
+        <td><input type="submit" class="btn btn-info" value="Accept" /></td>
+    </tr>
+</table>
+}

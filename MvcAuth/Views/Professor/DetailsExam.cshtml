@@ -1,0 +1,122 @@
+﻿@model MvcAuth.Models.ExamTbl
+
+@{
+    ViewBag.Title = "DetailsExam";
+}
+
+<h2>DetailsExam</h2>
+
+<div>
+    <h4>ExamTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ex_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ex_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prof_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfessorTbl.Prof_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ex_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ex_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ex_Info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ex_Info)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ex_Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ex_Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ex_Munite_Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ex_Munite_Duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ex_Start_On)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ex_Start_On)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ex_End_On)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ex_End_On)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ex_Passing_Mark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ex_Passing_Mark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Course_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseTbl.Course_Name)
+        </dd>
+        <dt>
+            Stuatus Exam
+        </dt>
+
+        <dd>
+                @if(ViewBag.msg != null)
+                {
+                    <p class="active"> @ViewBag.msg</p>
+                }
+        </dd>
+
+        <dt>
+            Suatus for Students
+        </dt>
+
+        <dd>
+            @if (Model.IsShow == true)
+            {
+                <p class="text-success">Show</p>
+            }
+            else if (Model.IsShow == false)
+            {
+                <p class="text-danger">Hide</p>
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "ExamManagment")
+</p>

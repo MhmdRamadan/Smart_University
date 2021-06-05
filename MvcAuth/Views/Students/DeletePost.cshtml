@@ -1,0 +1,20 @@
+﻿@model MvcAuth.Models.PostTbl
+
+@{
+    ViewBag.Title = "Delete Post";
+}
+
+<hr />
+<a href="@Url.Action("Index","Students")" class="btn-link" style="padding:10px">Back To Posts</a>
+<hr />
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    @using (Html.BeginForm("DeletePost", "Students", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> 
+        </div>
+    }
+</div>

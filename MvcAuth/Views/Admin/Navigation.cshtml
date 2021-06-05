@@ -1,0 +1,296 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>FCI | home</title>
+    <meta name="description" content="" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="robots" content="all,follow" />
+    <link rel="stylesheet" href="~/Content/Admin/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Admin/vendor/font-awesome/css/all.min.css" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" />
+    <link rel="stylesheet" href="~/Content/Admin/css/style.css" id="theme-stylesheet" />
+    <link rel="shortcut icon" href="img/favicon.ico" />
+</head>
+<body>
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <nav class="side-navbar">
+                <div class="sidebar-header d-flex align-items-center">
+                    <div class="avatar">
+                        
+                        <img src="@Url.Action("RenderImage")"
+                             alt="thumbnail"
+                             class="img-fluid rounded-circle" />
+                    </div>
+                    <div class="title">
+                        <h1 class="h4">
+                            @Session["AdminName"]
+                        </h1>
+                        <p>
+                            Admin
+                            <br />
+                        </p>
+                    </div>
+                </div>
+                <span class="heading">Main</span>
+                <ul class="list-unstyled">
+                   
+                        <li class="active">
+                            <a href="@Url.Action("Navigation")"> <i class="fad fa-home fa-2x"></i>Home</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("GetCourses", "Admin")">
+                                <i class="fad fa-books fa-2x"></i>Courses
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="@Url.Action("AddEvents", "Professor")">
+                                <i class="fad fa-calendar-star fa-2x"></i>Events
+                            </a>
+                        </li>
+
+                    </ul>
+                    
+                    
+               
+</nav>
+
+            <div class="content-inner">
+                <header class="page-header bg-dark">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center">
+                            <a id="toggle-btn" href="@Url.Action("Navigation")" class="menu-btn active">
+                                <span></span><span></span><span></span>
+                            </a>
+
+                            <a href="index.html"
+                               class="navbar-brand d-none d-sm-inline-block text-white">
+                                <div class="brand-text d-none d-lg-inline-block">
+                                    <span>Smart</span><strong>University</strong>
+                                </div>
+                                <div class="brand-text d-none d-sm-inline-block d-lg-none">
+                                    <strong>FCI</strong>
+                                </div>
+                            </a>
+
+                            <a href="@Url.Action("LogOff","Account")" class="nav-link ml-auto logout text-light">
+                                <span class="d-none d-sm-inline">Logout</span><i class="fad fa-sign-out"></i>
+                            </a>
+                        </div>
+                    </div>
+                </header>
+
+                <section class="dashboard-counts no-padding-bottom">
+                    <div class="container-fluid">
+                        <div class="row bg-white has-shadow">
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="item d-flex align-items-center">
+                                    <div class="icon bg-violet">
+                                        <i class="fal fa-user"></i>
+                                    </div>
+                                    <div class="title">
+                                        <span>New<br />Vistors</span>
+                                        <div class="progress">
+                                            <div role="progressbar"
+                                                 style="width: 25%; height: 4px"
+                                                 aria-valuenow="25"
+                                                 aria-valuemin="0"
+                                                 aria-valuemax="100"
+                                                 class="progress-bar bg-violet"></div>
+                                        </div>
+                                    </div>
+                                    <div class="number"><strong>@ViewBag.NewSignUp</strong></div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="item d-flex align-items-center">
+                                    <div class="icon bg-red">
+                                        <i class="fal fa-file-user"></i>
+                                    </div>
+                                    <div class="title">
+                                        <span>New<br />Students</span>
+                                        <div class="progress">
+                                            <div role="progressbar"
+                                                 style="width: 70%; height: 4px"
+                                                 aria-valuenow="70"
+                                                 aria-valuemin="0"
+                                                 aria-valuemax="100"
+                                                 class="progress-bar bg-red"></div>
+                                        </div>
+                                    </div>
+                                    <div class="number"><strong>@ViewBag.Students</strong></div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="item d-flex align-items-center">
+                                    <div class="icon bg-green">
+                                        <i class="fal fa-user-chart"></i>
+                                    </div>
+                                    <div class="title">
+                                        <span>New<br />Professors</span>
+                                        <div class="progress">
+                                            <div role="progressbar"
+                                                 style="width: 40%; height: 4px"
+                                                 aria-valuenow="40"
+                                                 aria-valuemin="0"
+                                                 aria-valuemax="100"
+                                                 class="progress-bar bg-green"></div>
+                                        </div>
+                                    </div>
+                                    <div class="number"><strong>@ViewBag.Professors</strong></div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-sm-6">
+                                <div class="item d-flex align-items-center">
+                                    <div class="icon bg-orange">
+                                        <i class="fal fa-file-alt"></i>
+                                    </div>
+                                    <div class="title">
+                                        <span>Courses<br />Taken</span>
+                                        <div class="progress">
+                                            <div role="progressbar"
+                                                 style="width: 50%; height: 4px"
+                                                 aria-valuenow="50"
+                                                 aria-valuemin="0"
+                                                 aria-valuemax="100"
+                                                 class="progress-bar bg-orange"></div>
+                                        </div>
+                                    </div>
+                                    <div class="number"><strong>@ViewBag.Courses</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="dashboard-header">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="statistics col-lg-3 col-12">
+                                <div class="
+                      statistic
+                      d-flex
+                      align-items-center
+                      bg-white
+                      has-shadow
+                    ">
+                                    <div class="icon bg-red"><i class="fal fa-tasks"></i></div>
+                                    <div class="text">
+                                        <strong>@ViewBag.Posts</strong>
+                                        <br />
+                                        <small>Average of Posts</small>
+                                    </div>
+                                </div>
+                                <div class="
+                      statistic
+                      d-flex
+                      align-items-center
+                      bg-white
+                      has-shadow
+                    ">
+                                    <div class="icon bg-green">
+                                        <i class="fal fa-calendar-week"></i>
+                                    </div>
+                                    <div class="text">
+                                        <strong>@ViewBag.NewSignUp</strong>
+                                        <br />
+                                        <small>Average of Vistors</small>
+                                    </div>
+                                </div>
+                                <div class="
+                      statistic
+                      d-flex
+                      align-items-center
+                      bg-white
+                      has-shadow
+                    ">
+                                    <div class="icon bg-orange">
+                                        <i class="fal fa-paper-plane"></i>
+                                    </div>
+                                    <div class="text">
+                                        <strong>147</strong>
+                                        <br />
+                                        <small>Average of New Signups</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart col-lg-6 col-12">
+                                <div class="
+                      line-chart
+                      bg-white
+                      d-flex
+                      align-items-center
+                      justify-content-center
+                      has-shadow
+                    ">
+                                    <canvas id="lineCahrt"></canvas>
+                                </div>
+                            </div>
+                            <div class="chart col-lg-3 col-12">
+                                <!-- Bar Chart   -->
+                                <div class="bar-chart has-shadow bg-white">
+                                    <div class="title">
+                                        <strong class="text-violet">95%</strong>
+                                        <br />
+                                        <small>Current Server Uptime</small>
+                                    </div>
+                                    <canvas id="barChartHome"></canvas>
+                                </div>
+                                <div class="
+                      statistic
+                      d-flex
+                      align-items-center
+                      bg-white
+                      has-shadow
+                    ">
+                                    <div class="icon bg-green">
+                                        <i class="fal fa-chart-line"></i>
+                                    </div>
+                                    <div class="text">
+                                        <strong>99.9%</strong><br /><small>Success Rate</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="main-footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>F2021</p>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <p>
+                                
+                                  
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/Admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/Admin/vendor/popper.js/popper.min.js"></script>
+    <script src="~/Content/Admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/Admin/js/front.js"></script>
+    <script src="~/Content/Admin/js/charts-home.js"></script>
+    <script src="~/Content/Admin/vendor/chart.js/Chart.min.js"></script>
+   
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MvcAuth.Models.Exam_Result_Tbl>
+
+@{
+    ViewBag.Title = "ExamResult";
+}
+
+<h2>Exam Result</h2>
+
+<p>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Res_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ex_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.St_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Res_Degree)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Res_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExamTbl.Ex_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentTbl.St_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Res_Degree)
+        </td>
+
+    </tr>
+}
+
+</table>

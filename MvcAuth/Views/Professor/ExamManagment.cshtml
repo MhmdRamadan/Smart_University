@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MvcAuth.Models.ExamTbl>
+
+@{
+    ViewBag.Title = "Exam Managment";
+    int i = 1;
+}
+
+<h2>Exam Managment</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddExam")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Num.
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ex_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Course_ID)
+        </th>
+        <th>
+            Suatus for Students
+        </th>
+        <th></th>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+<tr>
+    <td>No Data For View<</td>
+</tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(i++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ex_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseTbl.Course_Name)
+                </td>
+                <td>
+                    @if (item.IsShow == true)
+                    {
+                        <p class="text-success"> Show</p>
+                    }
+                    else if (item.IsShow == false)
+                    {
+                        <p class="text-danger">Hide</p>
+                    }
+                </td>
+                <td>
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "DetailsExam", new { id = item.Ex_ID }) |
+                    @Html.ActionLink("Edit", "EditExam", new { id = item.Ex_ID }) |
+                    @Html.ActionLink("Delete", "DeleteExam", new { id = item.Ex_ID })|
+                    @Html.ActionLink("View As Exam", "ExamView", new { id = item.Ex_ID })
+
+                </td>
+            </tr>
+        }
+
+    }
+
+
+</table>

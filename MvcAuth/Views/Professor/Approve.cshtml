@@ -1,0 +1,42 @@
+﻿@model MvcAuth.Models.RegisterCoursesTbl
+
+@{
+    ViewBag.Title = "Approve";
+}
+
+<h2>Approve</h2>
+
+<h3>Are you sure you want to Approve this?</h3>
+<div>
+    <h4>RegisterCoursesTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+ 
+        <dt>
+            @Html.DisplayNameFor(model => model.St_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentTbl.St_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Course_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseTbl.Course_Name)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Approve" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ApproveCourses")
+        </div>
+    }
+</div>

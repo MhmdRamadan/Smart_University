@@ -1,0 +1,40 @@
+﻿
+@model IEnumerable<MvcAuth.Models.Prof_Video_TBL>
+
+<table class="table table-hover table-bordered text-center shadow-3" align="center">
+    <tr>
+        <th>
+            <label>Video name</label>
+        </th>
+        <th>
+            <label>Course name</label>
+        </th>
+        <th>
+            <label> Options</label>
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Prof_Video_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseTbl.Course_Name)
+            </td>
+            <td>
+                <a href=@item.Prof_Video>Open </a> |
+
+                @Html.ActionLink("Delete", "DeleteVideo", new { id = item.Video_ID })
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+
