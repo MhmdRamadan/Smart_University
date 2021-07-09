@@ -1,6 +1,4 @@
-﻿@{
-    Layout = null;
-}
+﻿@{ Layout = null; }
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +32,7 @@
                             @Session["ProfessorName"]
                         </h1>
                         <p>
-                           Professor
+                            Professor
                             <br />
                         </p>
                     </div>
@@ -43,6 +41,9 @@
                 <ul class="list-unstyled">
                     <li class="active">
                         <a href="@Url.Action("Navigation","Professor")"> <i class="fad fa-home"></i>Home</a>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("MyProfile","Professor")"> <i class="fad fa-home"></i>My Profile</a>
                     </li>
                     <li>
                         <a href="@Url.Action("FileUpload","Professor")"> <i class="fad fa-presentation"></i>Lectures</a>

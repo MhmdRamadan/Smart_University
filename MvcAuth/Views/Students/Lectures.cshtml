@@ -1,47 +1,39 @@
 ﻿@model IEnumerable<MvcAuth.Models.Prof_Lecture_TBL>
+@{ ViewBag.Title = "Lectures";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml"; }
+@if (Model.Count() <= 0)
+{
+<div class="card-body mb-5 ">
+    <div class="card-header ">
+        No Lecures
+    </div>
+</div> 
+}
+else
+{
+<div class="container mt-5">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+         <div class="col-md-4">
+         <div class="card mb-5 mr-6" style="margin: auto; width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-header">
+                    @Html.DisplayFor(modelItem => item.Prof_Lecture_Name)
+                </h5>
+                <div class="card-header">
+                    @Html.DisplayFor(modelItem => item.CourseTbl.Course_Name)
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                @Html.ActionLink("Download", "DownLoadFile", new { @class = "btn btn-danger btn-block", id = item.Prof_Lecture_ID })
+            </div>
+        </div>
 
-<div class="form-horizontal">
-    <h1>Lectures</h1>
+
+    </div>    
+        }
+    </div>
+
 </div>
-<br />
-<br />
-<table class="table table-hover table-bordered text-center shadow-3" align="center">
-    <tr>
-
-        <th>
-            <label>Lecture name</label>
-
-        </th>
-
-        <th align="center">
-            <label>Course name</label>
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Prof_Lecture_Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CourseTbl.Course_Name)
-            </td>
-            <td>
-                @Html.ActionLink("Download", "DownLoadFile", new { id = item.Prof_Lecture_ID })
-
-            </td>
-        </tr>
-    }
-
-</table>
-@Html.ActionLink("Back to navigation", "navigation")
-<style type="text/css">
-    label {
-        display: block;
-        text-align: center;
-    }
-</style>
+}

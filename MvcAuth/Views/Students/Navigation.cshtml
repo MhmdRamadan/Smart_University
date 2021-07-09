@@ -1,69 +1,98 @@
 ﻿@model IEnumerable<MvcAuth.Models.PostTbl>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "DashBoard";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
 }
-<br />
-<div class="container">
-    <div class="col-md-3 text-center">
-        <a href="@Url.Action("Index","Students")" class="btn btn-block btn-default" style="padding:10px">Home</a>
-        <a href="@Url.Action("Courses","Students")" class="btn btn-block btn-default" style="padding:10px">My Courses</a>
-        <a href="@Url.Action("Absence","Students")" class="btn btn-block btn-default" style="padding:10px">Attendance</a>
-        <a href="@Url.Action("Index","Chat")" class="btn btn-block btn-default" style="padding:10px">Chat With Us</a>
-        <a href="@Url.Action("videos","Students")" class="btn btn-block btn-default" style="padding:10px">Lectures videos</a>
-        <a href="@Url.Action("Lectures","Students")" class="btn btn-block btn-default" style="padding:10px">Lectures pdf</a>
-        <a href="@Url.Action("AvaliableExam","Students")" class="btn btn-block btn-default" style="padding:10px">Avaliable Exam</a>
-        <a href="@Url.Action("ExamResult","Students")" class="btn btn-block btn-default" style="padding:10px">Exam Result</a>
 
+@if (Model.Count() <= 0)
+{
+    <br />
+    <p class="h4 text-black-50 text-center">No posts</p>
+    <br />
+    <div class="text-center">
+        <a href="@Url.Action("Navigation","Students")" class="btn btn-dark btn-lg"> Back To Home</a>
+        <a href="@Url.Action("NewPost","Students")" class="btn btn-dark btn-lg">Create New Post</a>
     </div>
-    <div class="col-md-9">
-        @if (Model.Count() <= 0)
-        {
+
+}
+else
+{
+
+    <div class="container mt-5">
+        <div class="col-md">
             <div class="text-center">
-                <p class="h3 text-danger">No Posts</p>
-                <a href="@Url.Action("NewPost","Students")" class="btn btn-default">Create First Post</a>
-            </div>
-        }
-        else
-        {
-            <hr />
-            <div class="text-center">
-                <a href="@Url.Action("NewPost","Students")" class="btn btn-success btn-lg btn-block">Create New Post</a>
+                <div class="row">
+                    <div class="col-md-6">
+                        @using (Html.BeginForm("Navigation", "Students", FormMethod.Get))
+                        {
+                            <div class="input-group">
+                                @Html.TextBox("id", null,new { @class = "form-control" ,placeholder = "Search" })
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <div class="col-md-6">
+                        <a href="@Url.Action("NewPost","Students")" class="btn btn-block btn-dark">Create New Post</a>
+                    </div>
+                </div>
             </div>
             <br />
-            foreach (var i in Model)
+            @foreach (var i in Model)
             {
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a>
-                            <span class="glyphicon glyphicon-user"></span>
-                            @Html.DisplayFor(a => i.StudentTbl.St_Name)
-                        </a>
+                <div class="card">
+                    <div class="card-header">
+                        <img class="figure-img img-circle" style="border-radius:50%" width="30" height="30" src="@Url.Action("RenderImageUser","Students",new { id=i.St_ID})" /> <span class="text-black-50">@Html.DisplayFor(a => i.StudentTbl.St_Name)</span>
                         <p>
-                            <span class="glyphicon glyphicon-time"></span>
-                            @Html.DisplayFor(a => i.Post_Date)
+                            <i class="fas fa-clock"></i>
+                            @i.Post_Date.ToString().Split(' ')[0] | @i.Post_Date.ToString().Split(' ')[1]
                         </p>
                         @if (i.St_ID == Convert.ToInt32(Session["StudentID"]))
                         {
-                            <a href="@Url.Action("DeletePost","Students",new { id = i.Post_ID})" onclick="DeletePost()" style="position:absolute; margin-top:-50px;margin-left:780px">
-                                <span class="glyphicon glyphicon-trash"></span>
+                            <a href="@Url.Action("DeletePost","Students",new { id = i.Post_ID})" onclick="DeletePost()" style="position:absolute;left:95%;top: 20px;">
+                                <i class="fas fa-trash text-dark"></i>
                             </a>
                         }
-                    </div>
-                    <div class="panel-body text-center h3">
-                        @Html.Raw(i.Post_Content.Replace("<br/>", "\r\n"))
 
                     </div>
-                    <div class="panel-footer">
-                        <a href="@Url.Action("Replys","Students" , new { id=i.Post_ID})"
-                           class="btn btn-default btn-block">
-                            <span class="glyphicon glyphicon-comment"></span>
-                            View details and Replys
+                    <div class="card-body text-center h3">
+                        @Html.Raw(i.Post_Content.Replace("<br/>", "\r\n"))
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-outline-dark btn-block"  href="@Url.Action("Replys","Students" , new { id=i.Post_ID})">
+                            <i class="fas fa-comment"></i>
+                             View Replys And Details
                         </a>
                     </div>
                 </div>
-                <hr />
+                <br />
+                <br />
             }
-        }
+        </div>
+    </div>
 
+}
+<div class="popup">
+    <div class="shadow"></div>
+    <div class="inner_popup">
+        <div class="notification_dd">
+            <ul class="notification_ul">
+                <li class="title">
+                    <p>Create New Post</p>
+                    <p class="close"><i class="fas fa-times" aria-hidden="true"></i></p>
+                </li>
+            </ul>
+            <br>
+            <form style="margin-left: 30px; margin-right: 30px;">
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="write your post here....." rows="5"></textarea>
+                </div>
+                <button style="margin-left:0%;" type="submit" class="btn btn-block btn-primary">Post</button>
+            </form>
+        </div>
     </div>
 </div>

@@ -1,0 +1,203 @@
+﻿@model MvcAuth.Models.NewsTbl
+@{ Layout = null;
+               }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Admin | Create Course</title>
+    <meta name="description" content="" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="robots" content="all,follow" />
+
+    <link rel="stylesheet" href="~/Content/Admin/vendor/bootstrap/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="~/Content/Admin/vendor/font-awesome/css/all.min.css" />
+    <link href="~/Content/Admin/vendor/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" />
+    <link rel="stylesheet" href="~/Content/Admin/css/style.css" id="theme-stylesheet" />
+
+    <link rel="shortcut icon" href="~/Content/Admin/img/favicon.ico" />
+
+</head>
+<body>
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <nav class="side-navbar">
+                <div class="sidebar-header d-flex align-items-center">
+                    <div class="avatar">
+                        <a href="@Url.Action("MyProfile","Admin")">
+                            <img src="@Url.Action("RenderImage")"
+                                 alt="thumbnail"
+                                 class="img-fluid rounded-circle" />
+                        </a>
+                    </div>
+                    <div class="title">
+                        <h1 class="h4">
+                            <a href="@Url.Action("MyProfile","Admin")">
+                                @Session["AdminName"].ToString().Split(' ')[0]
+                            </a>
+                        </h1>
+                        <p>
+                            <a href="@Url.Action("Navigation","Admin")">
+                                Admins
+                            </a>
+                            <br />
+                        </p>
+                    </div>
+                </div>
+                <span class="heading">Main</span>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="@Url.Action("Navigation","Admin")">
+                            <i class="fad fa-home fa-2x"></i>
+                            Home
+                        </a>
+                    </li>
+
+                    <li >
+                        <a href="@Url.Action("GetCourses", "Admin")">
+                            <i class="fad fa-books fa-2x"></i>
+                            Courses
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("AddEvents", "Admin")">
+                            <i class="fad fa-calendar-star fa-2x"></i>
+                            Events
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Admins", "Admin")">
+                            <i class="fad fa-user-chart fa-2x"></i>
+                            Admins
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Professors", "Admin")">
+                            <i class="fad fa-chalkboard-teacher fa-2x"></i>
+                            Professors
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Students", "Admin")">
+                            <i class="fad fa-user fa-2x"></i>
+                            Students
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="@Url.Action("CreateNews", "Admin")">
+                            <i class="fad fa-newspaper fa-2x"></i>
+                            News
+                        </a>
+                    </li>
+                
+                </ul>
+            </nav>
+
+            <div class="content-inner">
+                <header class="page-header bg-dark">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center">
+                            <a id="toggle-btn" href="@Url.Action("Navigation","Admin")" class="menu-btn active">
+                                <span></span><span></span><span></span>
+                            </a>
+                            <a href="@Url.Action("Navigation","Admin")"
+                               class="navbar-brand d-none d-sm-inline-block text-white">
+                                <div class="brand-text d-none d-lg-inline-block">
+                                    <span>Smart</span><strong>University</strong>
+                                </div>
+                                <div class="brand-text d-none d-sm-inline-block d-lg-none">
+                                    <strong>FCI</strong>
+                                </div>
+                            </a>
+                            <a href="@Url.Action("LogOff","Account")" class="nav-link ml-auto logout text-light">
+                                <span class="d-none d-sm-inline">Logout</span><i class="fad fa-sign-out"></i>
+                            </a>
+                        </div>
+                    </div>
+                </header>
+                <header class="page-header">
+                    <div class="container-fluid">
+                        <h2 class="no-margin-bottom">News</h2>
+                    </div>
+                </header>
+                <section>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-6">
+                            @using (Html.BeginForm())
+                            {
+                @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                @if (TempData["News"] != null)
+                                {
+                            <script src="~/Content/sweetalert2/sweetalert2.min.js"></script>
+                                                <link href="~/Content/sweetalert2/sweetalert2.css" rel="stylesheet" />
+                                                                    <script src="~/Scripts/jquery-3.1.1.js"></script>
+                                                                                        <script>
+    Swal.fire({
+                                                                                                position: 'top-end',
+                                                                                                icon: 'success',
+                                                                                                title: 'Your data has been saved',
+                                                                                                showConfirmButton: false,
+                                                                                                timer: 1500
+                                                                                            })</script>
+}
+
+
+                                <div class="form-group">
+                                    <label class="form-control-label">News title</label>
+
+                                    @Html.EditorFor(model => model.News_Title, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.News_Title, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">News content</label>
+
+                                    @Html.EditorFor(model => model.News_Content, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.News_Content, "", new { @class = "text-danger" })
+
+                                </div>
+
+                                <div class="form-group d-flex justify-content-center ">
+                                    <input type="submit" value="Add" class="btn btn-primary btn-block px-4" />
+
+                                </div>
+                            </div>}
+                        </div>
+                    </div>
+                </section>
+                <footer class="main-footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>FCI-2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/Admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/Admin/vendor/popper.js/popper.min.js"></script>
+    <script src="~/Content/Admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/Admin/js/front.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+
+</html>

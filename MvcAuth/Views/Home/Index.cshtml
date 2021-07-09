@@ -1,31 +1,316 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-<br />
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+﻿@model MvcAuth.Models.Data
+@{ Layout = null; }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <meta name="author" content="">
+    <!-- Title -->
+    <title>SMART UNIVERSTIY</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/ico" sizes="32x32" href="~/favicon.ico">
+    <!--Bootstrap css-->
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.css">
+    <!--Font Awesome css-->
+    <link rel="stylesheet" href="~/Content/assets/css/font-awesome.min.css">
+    <!--Magnific css-->
+    <link rel="stylesheet" href="~/Content/assets/css/magnific-popup.css">
+    <!--Owl-Carousel css-->
+    <link rel="stylesheet" href="~/Content/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/assets/css/owl.theme.default.min.css">
+    <!--Animate css-->
+    <link rel="stylesheet" href="~/Content/assets/css/animate.min.css">
+    <!--Datepicker css-->
+    <link rel="stylesheet" href="~/Content/assets/css/jquery.datepicker.css">
+    <!--Site Main Style css-->
+    <link rel="stylesheet" href="~/Content/assets/css/style.css">
+    <!--Responsive css-->
+    <link rel="stylesheet" href="~/Content/assets/css/responsive.css">
+    <!--popUp css-->
+    <link rel="stylesheet" href="~/Content/assets/css/login-register.css">
+</head>
+<body>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <!-- LOGO -->
+            <a class="navbar-brand logo d-lg-none" href="@Url.Action("Home")">
+                SMART UNIVERSITY
+            </a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="" class="nav-link" data-scroll-nav="0">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" data-scroll-nav="1">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" data-scroll-nav="2">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" data-scroll-nav="3">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" data-scroll-nav="4">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--Navbar End-->
+    <section class="droome-slider-area overlay" data-scroll-index="0">
+        <div class="droome-slide owl-carousel">
+            <div class="slider-container slider-1">
+                <div class="single-slider zoom"></div>
+            </div>
+            <div class="slider-container slider-2">
+                <div class="single-slider zoom"></div>
+            </div>
+        </div>
+        <div class="banner-area">
+            <div class="banner-caption container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 content-home">
+                            <div class="banner-welcome">
+                                <h2>SMART </h2>
+                                <h1>UNIVERSITY</h1>
+                                <a href="@Url.Action("Register","Account")" class="droome-btn">Register</a>
+                                <a href="@Url.Action("Login","Account")" class="droome-btn">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="droome-special-area section_70" data-scroll-index="1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h2>Features</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="special-slider owl-carousel">
+                        <div class="single-special">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="special-text">
+                                        <h2>Sutdent</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="special-text">
+                                        <ul>
+                                            <li><i class="fa fa-check"></i> Enroll in the courses that he wants.</li>
+                                            <li><i class="fa fa-check"></i> Posts what they want to say.</li>
+                                            <li><i class="fa fa-check"></i> Chat with other students. </li>
+                                        </ul>
+                                        <a href="@Url.Action("Register","Account")" class="droome-btn">Register</a>
+                                        <a href="@Url.Action("Login","Account")" class="droome-btn">Login</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="single-special">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="special-text">
+                                        <h2>Professor</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="special-text">
+                                        <ul>
+                                            <li><i class="fa fa-check"></i> can upload lectures like pdfs and videos.</li>
+                                            <li><i class="fa fa-check"></i> make online exams.</li>
+                                            <li><i class="fa fa-check"></i> track the student’s attendance. </li>
+                                        </ul>
+                                        <a href="@Url.Action("Register","Account")" class="droome-btn">Register</a>
+                                        <a href="@Url.Action("Login","Account")" class="droome-btn">Login</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-special">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="special-text">
+                                        <h2>Admin</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="special-text">
+                                        <ul>
+                                            <li><i class="fa fa-check"></i> assign each doctor to a department and a specific course.</li>
+                                            <li><i class="fa fa-check"></i> Posts the news and events.</li>
+                                            <li><i class="fa fa-check"></i> professors and students managamnet. </li>
+                                        </ul>
+                                        <a href="@Url.Action("Register","Account")" class="droome-btn">Register</a>
+                                        <a href="@Url.Action("Login","Account")" class="droome-btn">Login</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="droome-food-menu section_70" data-scroll-index="2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h2>Latest Events</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.Events)
+                {
+    <div class="col-lg-4">
+        <div class="single-signature">
+            <div class="signature-img">
+                <a href="@Url.Action("EDetails","Home",new { id=item.Event_ID})">
+                    <img src="~/Content/assets/img/event1.png" alt="Signature" />
+                </a>
+            </div>
+            <div class="signature-text">
+                <h3><a href="#">@item.Event_Name</a></h3>
+                <a href="@Url.Action("EDetails","Home",new {})" class="read-more">read more</a>
+            </div>
+        </div>
+    </div>}
+            </div>
+        </div>
+    </section>
+    <section class="droome-blog-area section_70" data-scroll-index="3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h2>Latest News</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.News)
+                {
+    <div class="col-lg-4">
+        <div class="single-blog">
+            <div class="blog-image">
+                <a href="@Url.Action("NDetails","Home", new { id=item.News_ID})">
+                    <img src="~/Content/assets/img/news2.png" alt="blog" />
+                </a>
+            </div>
+            <div class="blog-text">
+                <h3>
+                    <a href="">@item.News_Title</a>
+                </h3>
+                <p>@item.News_Content.ToString().Split(' ')[0] ...</p>
+                <a href="@Url.Action("NDetails","Home", new { id=item.News_ID})" class="read-more">read more</a>
+            </div>
+        </div>
+    </div>}
+            </div>
+        </div>
+    </section>
+
+    <section class="droome-contact-area section_70" data-scroll-index="4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h2>CONTACT</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 col-md-5">
+                    <div class="contact-left">
+                        @using (Html.BeginForm("SendMessage", "Home", FormMethod.Post))
+                        {
+            @Html.AntiForgeryToken()
+                            <p>
+                                @Html.TextBox("name", null, new { placeholder = "Your Name", @class = "input" })
+                                <span class="underline"></span>
+                            </p>
+                                            <p>
+                                                @Html.TextBox("email", null, new { placeholder = "Your Email", @class = "input" })
+                                                <span class="underline"></span>
+                                            </p>
+                                                            <p>
+                                                                @Html.TextArea("msg", null, new { placeholder = "Write your message here...", @class = "input" })
+                                                                <span class="textarea_u underline"></span>
+                                                            </p>
+                                                                            <p>
+                                                                                <button type="submit">Send Message</button>
+                                                                            </p>}
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7">
+                    <div class="contact-right">
+                        <div class="single-contact-info">
+                            <h3>SMART</h3>
+                            <h3>UNIVERSITY</h3>
+                        </div>
+                        <div class="single-contact-info">
+                            <p>For complaints and suggestions. </p>
+                        </div>
+                        <div class="single-contact-info info-contact-details">
+                            <p><span>Email</span> :  <a href="mailto:univeraityonline@zohomail.com"><span class="__cf_email__" data-cfemail="aad9dfdadac5d8deeacfd2cbc7dac6cf84c9c5c7">univeraityonline@zohomail.com</span></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="droome-footer-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-box">
+                        <p>&copy; 2021 - Graduation Project </p>
+                        <p>All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Jquery js-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="~/Content/assets/js/jquery-1.12.4.min.js"></script>
+    <!--Bootstrap js-->
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <!--Owl-Carousel js-->
+    <script src="~/Content/assets/js/owl.carousel.min.js"></script>
+    <!--ScrollIt js-->
+    <script src="~/Content/assets/js/scrollIt.min.js"></script>
+    <!--Magnific js-->
+    <script src="~/Content/assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Datepicker -->
+    <script src="~/Content/assets/js/jquery.datepicker.min.js"></script>
+    <!--Init js-->
+    <script src="~/Content/assets/js/init.js"></script>
+    <!--Turn js-->
+    <script src="~/Content/assets/js/turn.min.js"></script>
+    <!--Main js-->
+    <script src="~/Content/assets/js/main.js"></script>
+</body>
+</html>

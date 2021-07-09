@@ -1,20 +1,21 @@
-﻿<style>
+﻿
+
+<style>
     div.panel-body {
         overflow: scroll;
         background: url('../../pic/geometry2 (1).webp');
-       
     }
 </style>
 <h2>Chat Box</h2>
 <div class="chat-panel panel panel-default">
     <div class="panel-heading">
-     College live chat 
+        College live chat
         <i class="fa fa-paper-plane fa-fw"></i>
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body" id="chat" style="height:250px;">
         <input type="hidden" id="displayname" value="@Session["name"].ToString()" />
-        
+
 
 
 
@@ -30,8 +31,11 @@
 
             </span>
         </div>
+
     </div>
+
 </div>
+@Html.ActionLink("Back to Home", "Navigation", "Professor")
 @section scripts {
     <!--Script references. -->
     <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
@@ -62,7 +66,7 @@
                     alert("std");
                 }
                 else if(name=="prof") {
-                    
+
                     $('#discussion').append('<p style="color:blue;text-align:right;"><strong><img = src="https://www.phplivesupport.com/pics/icons/avatars/public/avatar_71.png" title="professor">'
                         + ' </strong> ' + htmlEncode(message) + '</p>');
                 }
@@ -102,4 +106,8 @@
             return encodedValue;
         }
     </script>
+
+
+
 }
+

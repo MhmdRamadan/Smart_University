@@ -107,6 +107,21 @@
                 <section>
                     <div class="row d-flex justify-content-center">
                         <div class="col-6">
+                            @if (TempData["Question"] != null)
+                            {
+                                <script src="~/Content/sweetalert2/sweetalert2.min.js"></script>
+                                <link href="~/Content/sweetalert2/sweetalert2.css" rel="stylesheet" />
+                                <script src="~/Scripts/jquery-3.1.1.js"></script>
+                                <script>
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Your data has been saved',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                </script>
+                            }
                             @model MvcAuth.Models.QuestionsTbl
 
                             @{
@@ -119,91 +134,91 @@
                             {
                                 @Html.AntiForgeryToken()
 
-                        <div class="form-horizontal">
-                            @if (ViewBag.msg != null)
-                            {
-                                <h2 class="text-danger">@ViewBag.msg</h2>
-                            }
-                      
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group">
-                            <label class="form-control-label">Exame Name</label>
+                                <div class="form-horizontal">
+                                    @if (ViewBag.msg != null)
+                                    {
+                                        <h2 class="text-danger">@ViewBag.msg</h2>
+                                    }
 
-                            @Html.DropDownListFor(model => model.Ex_ID, ViewBag.Exames as SelectList, "Select Exam Name", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Ex_ID, "", new { @class = "text-danger" })
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <label class="form-control-label">Exame Name</label>
 
-                        </div>
+                                        @Html.DropDownListFor(model => model.Ex_ID, ViewBag.Exames as SelectList, "Select Exam Name", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Ex_ID, "", new { @class = "text-danger" })
 
-                        <div class="form-group">
-                            <label class="form-control-label">Question</label>
+                                    </div>
 
-                            @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <label class="form-control-label">Question</label>
 
-                        </div>
+                                        @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
 
-                        <div class="form-group">
-                            <label class="form-control-label">First choice</label>
+                                    </div>
 
-                            @Html.EditorFor(model => model.First_Choice, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.First_Choice, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <label class="form-control-label">First choice</label>
 
-                        </div>
+                                        @Html.EditorFor(model => model.First_Choice, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.First_Choice, "", new { @class = "text-danger" })
 
-                        <div class="form-group">
-                            <label class="form-control-label">Second choice</label>
+                                    </div>
 
-                            @Html.EditorFor(model => model.Second_Choice, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Second_Choice, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <label class="form-control-label">Second choice</label>
 
-                        </div>
+                                        @Html.EditorFor(model => model.Second_Choice, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Second_Choice, "", new { @class = "text-danger" })
 
-                        <div class="form-group">
-                            <label class="form-control-label">Third choice</label>
+                                    </div>
 
-                            @Html.EditorFor(model => model.Third_Choice, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Third_Choice, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <label class="form-control-label">Third choice</label>
 
-                        </div>
+                                        @Html.EditorFor(model => model.Third_Choice, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Third_Choice, "", new { @class = "text-danger" })
+
+                                    </div>
 
 
-                        <div class="form-group">
-                            <label class="form-control-label">Fourth choice</label>
+                                    <div class="form-group">
+                                        <label class="form-control-label">Fourth choice</label>
 
-                            @Html.EditorFor(model => model.Fourth_Choice, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.EditorFor(model => model.Fourth_Choice, new { htmlAttributes = new { @class = "form-control" } })
 
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Correct choice</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label">Correct choice</label>
 
-                            @Html.DropDownListFor(model => model.Correct_Choice, new List<SelectListItem>
-                          {
-                              new SelectListItem{Text ="A" , Value = "A" },
-                              new SelectListItem{Text ="B" , Value = "B" },
-                              new SelectListItem{Text ="C" , Value = "C" },
-                              new SelectListItem{Text ="D" , Value = "D" } },
-                              "Seclect Correct Choise",new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Correct_Choice, "", new { @class = "text-danger" })
+                                        @Html.DropDownListFor(model => model.Correct_Choice, new List<SelectListItem>
+                                      {
+                                          new SelectListItem{Text ="A" , Value = "A" },
+                                          new SelectListItem{Text ="B" , Value = "B" },
+                                          new SelectListItem{Text ="C" , Value = "C" },
+                                          new SelectListItem{Text ="D" , Value = "D" } },
+                                          "Seclect Correct Choise", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Correct_Choice, "", new { @class = "text-danger" })
 
-                        </div>
+                                    </div>
 
-                        <div class="form-group">
-                            <label class="form-control-label">Question degree</label>
+                                    <div class="form-group">
+                                        <label class="form-control-label">Question degree</label>
 
-                            @Html.EditorFor(model => model.Degree, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Degree, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.Degree, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Degree, "", new { @class = "text-danger" })
 
-                        </div>
+                                    </div>
 
-                            <div class="form-group d-flex justify-content-center">
-                                <input type="submit" value="Create" class="btn btn-primary px-4" />
-                        
-                        </div>
+                                    <div class="form-group d-flex justify-content-center">
+                                        <input type="submit" value="Create" class="btn btn-primary px-4" />
+
+                                    </div>
                                 </div>
                             }
 
 
-                           
+
 
 
                         </div>

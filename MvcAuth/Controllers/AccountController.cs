@@ -22,12 +22,12 @@ namespace MvcAuth.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         public UniversityDBEntities1 Db = new UniversityDBEntities1();
-        
+
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -39,9 +39,9 @@ namespace MvcAuth.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -63,42 +63,42 @@ namespace MvcAuth.Controllers
         ApplicationDbContext context = new ApplicationDbContext();
         public ActionResult CreateRole(string rolename)
         {
-           
+
             context.Roles.Add(new IdentityRole
             {
                 Name = rolename
-            }) ;
-            context.SaveChanges();        
+            });
+            context.SaveChanges();
             return View("RoleUI");
         }
 
-        public ActionResult UserRole ()
+        public ActionResult UserRole()
         {
-            
-            ViewBag.Users = new SelectList(context.Users,"Id", "UserName");
-           
+
+            ViewBag.Users = new SelectList(context.Users, "Id", "UserName");
+
             return View();
         }
-       
-        public ActionResult AssignUserToRole(string UserName, string Name="Professor")
-        {
-            ViewBag.Users = new SelectList(context.Users, "Id", "UserName");      
 
-          
-           
-             var user=Db.AspNetUsers.Single(s => s.Id == UserName);
-             ProfessorTbl professor = new ProfessorTbl();
-             professor.Prof_Name = user.FullName;
-             professor.Prof_Email = user.Email;
-             professor.Prof_Pass = user.PasswordHash;
-             Db.ProfessorTbls.Add(professor);
-             Db.SaveChanges();
-           
+        public ActionResult AssignUserToRole(string UserName, string Name = "Professor")
+        {
+            ViewBag.Users = new SelectList(context.Users, "Id", "UserName");
+
+
+
+            var user = Db.AspNetUsers.Single(s => s.Id == UserName);
+            ProfessorTbl professor = new ProfessorTbl();
+            professor.Prof_Name = user.FullName;
+            professor.Prof_Email = user.Email;
+            professor.Prof_Pass = user.PasswordHash;
+            Db.ProfessorTbls.Add(professor);
+            Db.SaveChanges();
+
             return View("UserRole");
         }
-            // 
-            // GET: /Account/Login
-            [AllowAnonymous]
+        // 
+        // GET: /Account/Login
+        [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -122,6 +122,7 @@ namespace MvcAuth.Controllers
             {
                 Session["AdminID"] = admin.Admin_ID;
                 Session["AdminName"] = admin.Admin_Name;
+                Session["AdminEmail"] = admin.Admin_Email;
 
             }
 
@@ -130,6 +131,7 @@ namespace MvcAuth.Controllers
             {
                 Session["ProfessorID"] = professor.Prof_ID;
                 Session["ProfessorName"] = professor.Prof_Name;
+                Session["ProfessorEmail"] = professor.Prof_Email;
                 Session["ProfessorName2"] = Session["ProfessorName"];
 
             }
@@ -140,8 +142,7 @@ namespace MvcAuth.Controllers
                 string name = student.St_Name;
                 Session["StudentID"] = student.St_ID;
                 Session["StudentName"] = student.St_Name;
-               
-
+                Session["StudentEmail"] = student.St_Email;
             }
 
             // This doesn't count login failures towards account lockout
@@ -160,10 +161,11 @@ namespace MvcAuth.Controllers
                         {
                             return RedirectToAction("Navigation", "Admin");
                         }
-                        else
+                        else if (Session["StudentID"] != null)
                         {
                             return RedirectToAction("Navigation", "Students");
                         }
+                        return View();
                     }
 
                 case SignInStatus.LockedOut:
@@ -213,13 +215,13 @@ namespace MvcAuth.Controllers
             {
                 return View(model);
             }
-          
+
 
             // The following code protects for brute force attacks against the two factor codes. 
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -236,10 +238,10 @@ namespace MvcAuth.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-       
+
         public ActionResult Register()
         {
-         
+
             ViewBag.role = new SelectList(Db.AspNetRoles, "Name", "Name");
             return View();
         }
@@ -256,19 +258,19 @@ namespace MvcAuth.Controllers
 
             //asp.net identity code
             if (ModelState.IsValid)
-            { 
+            {
                 ViewBag.email = model.Email;
                 ViewBag.password = model.Pass;
                 RegisterViewModel model11 = new RegisterViewModel();
                 model11.Email = model.Email;
                 model11.Password = model.Pass;
                 model11.UserName = model.Name;
-                var user = new ApplicationUser { UserName = model11.Email, Email = model11.Email,FullName=model.Name };
+                var user = new ApplicationUser { UserName = model11.Email, Email = model11.Email, FullName = model.Name };
                 var result = await UserManager.CreateAsync(user, model11.Password);
-               
+
             }
             //Add users
-            if (Type=="Student")
+            if (Type == "Student")
             {
                 StudentTbl student = new StudentTbl();
                 student.St_Name = model.Name;
@@ -279,34 +281,34 @@ namespace MvcAuth.Controllers
                 //student.Dep_ID = 0;
                 Db.StudentTbls.Add(student);
                 Db.SaveChanges();
-               
+
                 return RedirectToAction("Navigation", "Account");
 
 
             }
-            else if (Type=="Professor")
+            else if (Type == "Professor")
             {
                 ProfessorTbl professor = new ProfessorTbl();
                 professor.Prof_Name = model.Name;
                 professor.Prof_Pass = model.Pass;
                 professor.Prof_Email = model.Email;
-                professor.Prof_Image= ConvertToBytes(file);
+                professor.Prof_Image = ConvertToBytes(file);
                 Db.ProfessorTbls.Add(professor);
                 Db.SaveChanges();
                 return RedirectToAction("Navigation", "Account");
             }
-          else if (Type=="Admin")
+            else if (Type == "Admin")
             {
                 AdminTbl admin = new AdminTbl();
                 admin.Admin_Email = model.Email;
                 admin.Admin_Name = model.Name;
                 admin.Admin_Pass = model.Pass;
-                admin.Admin_Pic= ConvertToBytes(file);
+                admin.Admin_Pic = ConvertToBytes(file);
                 Db.AdminTbls.Add(admin);
                 Db.SaveChanges();
                 return RedirectToAction("Navigation", "Account");
             }
-        
+
             return View(model);
         }
         public byte[] ConvertToBytes(HttpPostedFileBase image)
@@ -478,6 +480,8 @@ namespace MvcAuth.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    Session["StudentID"] = 1;
+                    Session["StudentName"] = "Mohamed";
                     return RedirectToAction("Navigation", "Students");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -532,8 +536,8 @@ namespace MvcAuth.Controllers
 
         //
         // POST: /Account/LogOff
-       
-      
+
+
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);

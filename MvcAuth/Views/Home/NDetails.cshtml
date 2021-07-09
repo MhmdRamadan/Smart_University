@@ -1,0 +1,104 @@
+﻿@{ Layout = null; }
+@model MvcAuth.Models.NewsTbl
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <meta name="author" content="">
+    <!-- Title -->
+    <title>SMART UNIVERSTIY</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/ico" sizes="32x32" href="~/favicon.ico">
+    <!--Bootstrap css-->
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.css">
+    <!--Font Awesome css-->
+    <link rel="stylesheet" href="~/Content/assets/css/font-awesome.min.css">
+    <!--Magnific css-->
+    <link rel="stylesheet" href="~/Content/assets/css/magnific-popup.css">
+    <!--Owl-Carousel css-->
+    <link rel="stylesheet" href="~/Content/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/assets/css/owl.theme.default.min.css">
+    <!--Animate css-->
+    <link rel="stylesheet" href="~/Content/assets/css/animate.min.css">
+    <!--Datepicker css-->
+    <link rel="stylesheet" href="~/Content/assets/css/jquery.datepicker.css">
+    <!--Site Main Style css-->
+    <link rel="stylesheet" href="~/Content/assets/css/style.css">
+    <!--Responsive css-->
+    <link rel="stylesheet" href="~/Content/assets/css/responsive.css">
+    <!--popUp css-->
+    <link rel="stylesheet" href="~/Content/assets/css/login-register.css">
+    <style>
+    </style>
+</head>
+<body>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a href="@Url.Action("Index","Home")" style="font-size:25px;text-align:center">  Back To home</a>
+    </nav>
+    <!--Navbar End-->
+    <section class="droome-food-menu section_70" data-scroll-index="2">
+        <div class="container" ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h2>Details New</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h2 style="color: #ca3d26">Tilte :  </h2>
+            </div>
+            <div class="row">
+                <h3>@Model.News_Title </h3>
+            </div>
+            <br />
+            <div class="row">
+                <h2 style="color: #ca3d26">Content </h2>
+            </div>
+            <div class="row">
+                <h3>@Model.News_Content </h3>
+            </div>
+            <hr />
+            <div class="row">
+                <h5>Added by / @Model.AdminTbl.Admin_Name </h5>
+            </div>
+        </div>
+    </section>
+    <footer class="droome-footer-area section_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-box">
+                        <p>&copy; 2021 - Graduation Project </p>
+                        <p>All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Jquery js-->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="~/Content/assets/js/jquery-1.12.4.min.js"></script>
+    <!--Bootstrap js-->
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <!--Owl-Carousel js-->
+    <script src="~/Content/assets/js/owl.carousel.min.js"></script>
+    <!--ScrollIt js-->
+    <script src="~/Content/assets/js/scrollIt.min.js"></script>
+    <!--Magnific js-->
+    <script src="~/Content/assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Datepicker -->
+    <script src="~/Content/assets/js/jquery.datepicker.min.js"></script>
+    <!--Init js-->
+    <script src="~/Content/assets/js/init.js"></script>
+    <!--Turn js-->
+    <script src="~/Content/assets/js/turn.min.js"></script>
+    <!--Main js-->
+    <script src="~/Content/assets/js/main.js"></script>
+</body>
+</html>

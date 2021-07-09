@@ -1,0 +1,522 @@
+/*================ Normal desktop :992px.==================== */
+
+@media (min-width: 992px) and (max-width: 1169px) {
+	.site-heading>p {
+		font-size: 65px
+	}
+	.droome-signature-dish-area .site-heading>p {
+		font-size: 65px
+	}
+	.droome-team-area .site-heading>p {
+		font-size: 65px
+	}
+	.side_bg {
+		left: 55px
+	}
+	.blog-text h3 {
+		font-size: 25px
+	}
+	.booking-right {
+		display: none
+	}
+    .opening-overlay{
+        width: 89%
+    }
+}
+
+
+/*================ Tablet desktop :768px.==================*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+	nav.navbar {
+		padding-top: 20px
+	}
+	.navbar-collapse {
+		background-color: #111;
+		text-align: center;
+	}
+	nav.navbar .nav-item .nav-link::before {
+		display: none
+	}
+	nav.navbar .nav-item:first-child {
+		padding-left: 13px;
+		margin-top: 15px
+	}
+	nav.navbar .nav-item:last-child {
+		padding-right: 13px;
+		margin-bottom: 15px
+	}
+	nav.navbar .nav-item .nav-link:hover::before,
+	nav.fixed-top .nav-item .nav-link.active::before {
+		display: none
+	}
+	nav.navbar .nav-item .nav-link {
+		padding: 0
+	}
+	ul.navbar-nav .nav-item {
+		display: block;
+		padding: 8px 10px
+	}
+	nav.fixed-top .nav-item .nav-link {
+		color: #fff !important
+	}
+	.promo-icon {
+		width: 60px
+	}
+	.promo-text h3 {
+		font-size: 34px
+	}
+	.single-promo {
+		padding: 55px 0
+	}
+	.droome-special-area .site-heading>p {
+		left: 16%
+	}
+	.single-special {
+		margin: 0 50px;
+	}
+	.special-slider .owl-dots {
+		margin-top: 0
+	}
+	.droome-signature-dish-area .site-heading>p {
+		left: 22%;
+		font-size: 60px
+	}
+	.single-signature {
+		margin: 0 50px 30px
+	}
+    .banner-welcome h2{
+        font-size: 55px
+    }
+	.booking-right {
+		display: none
+	}
+	.droome-team-area .site-heading>p {
+		font-size: 60px;
+		left: 30%
+	}
+	.droome-opening-area::after {
+		display: none
+	}
+	.droome-opening-area::before {
+		display: none
+	}
+	.opening-box {
+		width: 100%
+	}
+	.side_bg {
+		display: none
+	}
+	.single-blog {
+		margin: 0 50px 30px
+	}
+    .food-menu-box {
+		display: none
+	}
+	.food-menu-slider {
+		display: block !important
+	}
+    .special-slider{
+        margin-top: 30px
+    }
+    .special-image{
+        width: 60%;
+        margin: 0 auto 30px;
+    }
+    .special-text ul li i{
+        display: none
+    }
+    .site-heading h2{
+        font-size: 50px
+    }
+    .opening-overlay{
+        display: none
+    }
+    .single-promo.bg_promo{
+        padding: 55px 15px 55px
+    }
+    .special-text{
+        text-align: center
+    }
+	.droome-contact-area .site-heading>p {
+		font-size: 22%
+	}
+	.contact-left {
+		padding: 30px
+	}
+	.single-contact-info h3 {
+		font-size: 27px
+	}
+	.site-heading>p {
+		font-size: 60px;
+		left: 19%
+	}
+}
+
+
+/*================== small mobile :320px. ===================*/
+
+@media (max-width: 767px) {
+	nav.navbar {
+		padding-top: 20px
+	}
+	.banner-welcome img {
+		display: none;
+	}
+	.navbar-collapse {
+		background-color: #111;
+		text-align: center;
+	}
+	nav.navbar .nav-item .nav-link::before {
+		display: none
+	}
+	nav.navbar .nav-item:first-child {
+		padding-left: 13px;
+		margin-top: 15px
+	}
+	nav.navbar .nav-item:last-child {
+		padding-right: 13px;
+		margin-bottom: 15px
+	}
+	nav.navbar .nav-item .nav-link:hover::before,
+	nav.fixed-top .nav-item .nav-link.active::before {
+		display: none
+	}
+	nav.navbar .nav-item .nav-link {
+		padding: 0
+	}
+	ul.navbar-nav .nav-item {
+		display: block;
+		padding: 8px 10px
+	}
+	nav.fixed-top .nav-item .nav-link {
+		color: #fff !important
+	}
+	.banner-area {
+		left: 0;
+		width: 100%;
+		top: 35%
+	}
+	.banner-welcome h2 {
+		font-size: 50px
+	}
+	.droome-slide .owl-prev {
+		top: 85%;
+		left: 34%
+	}
+    .opening-overlay{
+        display: none
+    }
+	.droome-slide .owl-next {
+		top: 85%;
+		right: 34%
+	}
+	.site-heading {
+		width: 100%
+	}
+	.site-heading>p {
+		left: 9%;
+		font-size: 55px
+	}
+	.site-heading h2 {
+		font-size: 40px
+	}
+	.site-heading h2::before {
+		left: 45%
+	}
+	.about-box {
+		width: 100%
+	}
+	.droome-about-area::after {
+		display: none
+	}
+	.droome-special-area .site-heading>p {
+		left: 4%
+	}
+	.special-slider {
+		margin-top: 20px
+	}
+	.special-text {
+		text-align: center;
+		margin-top: 27px;
+	}
+	.special-text h3 {
+		font-size: 30px;
+		letter-spacing: 1px
+	}
+	.special-text ul li i {
+		display: none
+	}
+	.all-about>h3 {
+		font-size: 18px
+	}
+	.all-about>h2 {
+		font-size: 55px
+	}
+	.food-menu-box {
+		display: none
+	}
+	.food-menu-slider {
+		display: block !important
+	}
+	.droome-signature-dish-area .site-heading>p {
+		font-size: 60px;
+		left: 12%
+	}
+	.droome-booking-table-area .site-heading>p {
+		font-size: 55px
+	}
+	.booking-form p input {
+		height: 35px
+	}
+    .special-slider{
+        margin-top: 30px
+    }
+    .special-image{
+        width: 60%;
+        margin: 0 auto 30px;
+    }
+	.booking-right {
+		display: none
+	}
+    .special-text{
+        text-align: center
+    }
+	.droome-team-area .site-heading>p {
+		font-size: 60px;
+		left: 19%
+	}
+	.droome-opening-area::after {
+		display: none
+	}
+	.droome-opening-area::before {
+		display: none
+	}
+	.side_bg {
+		display: none
+	}
+	.opening-box {
+		width: 100%
+	}
+	.opening-box h2 {
+		font-size: 41px
+	}
+	.opening-box p {
+		font-size: 27px
+	}
+	.droome-contact-area .site-heading>p {
+		left: 12%
+	}
+	.contact-left {
+		padding: 30px
+	}
+	.single-contact-info h3 {
+		font-size: 26px;
+		letter-spacing: 1px
+	}
+	.contact-right {
+		margin-top: 50px
+	}
+	.info-contact-details p span {
+		width: 20%
+	}
+}
+
+
+/* ======================Large Mobile :480px.================== */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	nav.navbar {
+		padding-top: 20px
+	}
+	.banner-welcome img {
+		display: none;
+	}
+	.navbar-collapse {
+		background-color: #111;
+		text-align: center;
+	}
+	nav.navbar .nav-item .nav-link::before {
+		display: none
+	}
+	nav.navbar .nav-item:first-child {
+		padding-left: 13px;
+		margin-top: 15px
+	}
+	nav.navbar .nav-item:last-child {
+		padding-right: 13px;
+		margin-bottom: 15px
+	}
+	nav.navbar .nav-item .nav-link:hover::before,
+	nav.fixed-top .nav-item .nav-link.active::before {
+		display: none
+	}
+	nav.navbar .nav-item .nav-link {
+		padding: 0
+	}
+	ul.navbar-nav .nav-item {
+		display: block;
+		padding: 8px 10px
+	}
+	nav.fixed-top .nav-item .nav-link {
+		color: #fff !important
+	}
+	.banner-area {
+		left: 0;
+		width: 100%;
+		top: 35%
+	}
+	.banner-welcome h2 {
+		font-size: 50px
+	}
+	.droome-slide .owl-prev {
+		top: 75%;
+		left: 34%
+	}
+	.droome-slide .owl-next {
+		top: 75%;
+		right: 34%
+	}
+	.site-heading {
+		width: 100%
+	}
+	.site-heading>p {
+		left: 21%;
+		font-size: 55px
+	}
+	.site-heading h2 {
+		font-size: 40px
+	}
+	.site-heading h2::before {
+		left: 45%
+	}
+	.about-box {
+		width: 100%
+	}
+	.droome-about-area::after {
+		display: none
+	}
+	.droome-special-area .site-heading>p {
+		left: 4%
+	}
+    .special-image{
+        width: 60%;
+        margin: 0 auto 30px;
+    }
+    .special-text{
+        text-align: center
+    }
+    .opening-overlay{
+        display: none
+    }
+    .special-slider{
+        margin-top: 30px
+    }
+	.special-slider {
+		margin-top: 20px
+	}
+	.special-text {
+		text-align: center;
+		margin-top: 27px;
+	}
+	.special-text h3 {
+		font-size: 30px;
+		letter-spacing: 1px
+	}
+	.special-text ul li i {
+		display: none
+	}
+	.all-about>h3 {
+		font-size: 18px
+	}
+	.all-about>h2 {
+		font-size: 55px
+	}
+	.food-menu-box {
+		display: none
+	}
+	.food-menu-slider {
+		display: block !important
+	}
+	.droome-signature-dish-area .site-heading>p {
+		font-size: 60px;
+		left: 12%
+	}
+	.droome-booking-table-area .site-heading>p {
+		font-size: 55px
+	}
+	.booking-form p input {
+		height: 35px
+	}
+	.booking-right {
+		display: none
+	}
+	.droome-team-area .site-heading>p {
+		font-size: 60px;
+		left: 19%
+	}
+	.droome-opening-area::after {
+		display: none
+	}
+	.droome-opening-area::before {
+		display: none
+	}
+	.side_bg {
+		display: none
+	}
+	.opening-box {
+		width: 100%
+	}
+	.opening-box h2 {
+		font-size: 41px
+	}
+	.opening-box p {
+		font-size: 27px
+	}
+	.droome-contact-area .site-heading>p {
+		left: 12%
+	}
+	.contact-left {
+		padding: 30px
+	}
+	.single-contact-info h3 {
+		font-size: 26px;
+		letter-spacing: 1px
+	}
+	.contact-right {
+		margin-top: 50px
+	}
+	.info-contact-details p span {
+		width: 20%
+	}
+	.droome-promo-area {
+		background: none;
+		margin-bottom: 70px
+	}
+	.bg_promo_pad {
+		padding: 0 15px
+	}
+	.single-promo {
+		background: #f15f2a none repeat scroll 0 0;
+		padding: 70px 30px
+	}
+    .single-promo.bg_promo{
+        padding: 70px 30px
+    }
+	.droome-special-area .site-heading>p {
+		left: 19%
+	}
+    .single-food-menu{
+        margin: 5px 30px
+    }
+	.droome-signature-dish-area .site-heading>p {
+		left: 24%
+	}
+	.droome-team-area .site-heading>p {
+		left: 30%
+	}
+	.droome-contact-area .site-heading>p {
+		left: 24%
+	}
+}
+

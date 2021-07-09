@@ -1,0 +1,159 @@
+﻿@{ Layout = null; }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>FCI | home</title>
+    <meta name="description" content="" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="robots" content="all,follow" />
+    <link rel="stylesheet" href="~/Content/Admin/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Admin/vendor/font-awesome/css/all.min.css" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" />
+    <link rel="stylesheet" href="~/Content/Admin/css/style.css" id="theme-stylesheet" />
+    <link rel="shortcut icon" href="img/favicon.ico" />
+</head>
+<body>
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <nav class="side-navbar">
+                <div class="sidebar-header d-flex align-items-center">
+                    <div class="avatar">
+
+                        <img src="@Url.Action("RenderImage","Professor")"
+                             alt="thumbnail"
+                             class="img-fluid rounded-circle" />
+                    </div>
+                    <div class="title">
+                        <h1 class="h4">
+                            @Session["ProfessorName"]
+                        </h1>
+                        <p>
+                            Professor
+                            <br />
+                        </p>
+                    </div>
+                </div>
+                <span class="heading">Main</span>
+                <ul class="list-unstyled">
+                    <li class="">
+                        <a href="@Url.Action("Navigation","Professor")"> <i class="fad fa-home"></i>Home</a>
+                    </li>
+                    <li class="active">
+                        <a href="@Url.Action("MyProfile","Professor")"> <i class="fad fa-home"></i>My Profile</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("FileUpload","Professor")"> <i class="fad fa-presentation"></i>Lectures</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("UploadVideo","Professor")"> <i class="fas fa-video"></i>Videos</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ActionQrCode","Admin")"><i class="fad fa-qrcode"></i>QR Code</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ExamManagment","Professor")"> <i class="fas fa-graduation-cap"></i>Exams</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("QuestionsManagment","Professor")"> <i class="fas fa-graduation-cap"></i>Questions</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("CourseStudents","Professor")"> <i class="fas fa-user-graduate"></i>Students Courses</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ApproveCourses","Professor")"> <i class="fas fa-thumbs-up"></i>Approve requests</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Chat")"> <i class="fad fa-comments-alt"></i>Chat</a>
+                    </li>
+                </ul>
+
+
+
+            </nav>
+
+            <div class="content-inner">
+                <header class="page-header bg-dark">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center">
+                            <a id="toggle-btn" href="@Url.Action("Navigation")" class="menu-btn active">
+                                <span></span><span></span><span></span>
+                            </a>
+
+                            <a href="@Url.Action("Navigation")"
+                               class="navbar-brand d-none d-sm-inline-block text-white">
+                                <div class="brand-text d-none d-lg-inline-block">
+                                    <span>Smart</span><strong>University</strong>
+                                </div>
+                                <div class="brand-text d-none d-sm-inline-block d-lg-none">
+                                    <strong>FCI</strong>
+                                </div>
+                            </a>
+
+                            <a href="@Url.Action("LogOff","Account")" class="nav-link ml-auto logout text-light">
+                                <span class="d-none d-sm-inline">Logout</span><i class="fad fa-sign-out"></i>
+                            </a>
+                        </div>
+                    </div>
+                </header>
+                <section>
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="@Url.Action("RenderImage","Professor")" alt="" />
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h3 class="card-title text-center mb-4">User Details</h3>
+                                    <div class="card-text">
+                                        <p><strong>Id: </strong> @Session["ProfessorID"]</p>
+                                        <br />
+                                    </div>
+                                    <div class="card-text">
+                                        <p><strong>Name: </strong> @Session["ProfessorName"]</p>
+                                        <br />
+                                    </div>
+                                    <div class="card-text">
+                                        
+                                        <p><strong>Email: </strong>  @Session["ProfessorEmail"]</p>
+                                        <br />
+                                    </div>
+                                    <a href="@Url.Action("EditMyProfile","Professor")" class="btn btn-info px-5 btn-block">Edit My Profile  </a>
+                                    <a href="@Url.Action("ChangePassword","Professor")" class="btn btn-danger px-5 btn-block">Change Password  </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="main-footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>F2021</p>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <p>
+
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/Admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/Admin/vendor/popper.js/popper.min.js"></script>
+    <script src="~/Content/Admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/Admin/js/front.js"></script>
+    <script src="~/Content/Admin/js/charts-home.js"></script>
+    <script src="~/Content/Admin/vendor/chart.js/Chart.min.js"></script>
+
+
+</body>
+</html>

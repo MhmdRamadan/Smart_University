@@ -1,26 +1,23 @@
 ﻿
-@{
-    ViewBag.Title = "New Post";
-}
-<hr />
-<a href="@Url.Action("Navigation","Students")" class="btn-link" style="padding:10px">Back To Posts</a>
-<hr />
-<h2> Add New Post</h2>
+@{ ViewBag.Title = "New Post";
+                Layout = "~/Views/Shared/_LayoutStudent.cshtml"; }
+<br />
+<a href="@Url.Action("Navigation","Students")" class="btn-link h3" style="color: #df4759">Back To Posts > </a> <span class="h3 text-dark">Create New Post</span>
+<br />
+<br />
 <hr />
 @using (Html.BeginForm("NewPost", "Students", FormMethod.Post))
 {
-    @Html.AntiForgeryToken()
-    @Html.TextArea("PostContent".Replace("\n", "<br/>"), new
-        {
-            @class = "form-control",
-            style = "overflow:auto;resize:none;min-width:100%",
-            rows = "5",
-            placeholder = "Here, You Can Write Your Post ...",
-
-        })
-    @Html.ValidationMessage("PostContent", new { @class = "text-danger" })
-    <br />
-    <input type="submit" name="name" class="btn btn-success pull-right" value="Create New Post" />
-    <br />
-
-}
+@Html.AntiForgeryToken()
+                @Html.TextArea("PostContent".Replace("\n", "<br/>"), new
+                {
+                    @class = "form-control",
+                    style = "overflow:auto;resize:none;min-width:100%",
+                    rows = "5",
+                    placeholder = "Here, You Can Write Your Post ...",
+                     
+                })
+                                @Html.ValidationMessage("PostContent", new { @class = "text-danger" })
+                                                <br />
+                                                                <input type="submit" name="name" class="btn btn-outline-dark btn-block" value="Create New Post" />
+                                                                               }

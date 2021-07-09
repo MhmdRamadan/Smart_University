@@ -1,0 +1,44 @@
+﻿
+@model IEnumerable<MvcAuth.Models.EventTbl>
+<div class="container">
+        <table id="events" class="table table-striped table-hover table-bordered" style="width:100%">
+            <thead>
+                <tr>
+
+                    <th>
+                        <label>Event name</label>
+                    </th>
+                    <th>
+                        <label>Event Content</label>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+            <tr>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event_Content)
+                </td>
+                <td>
+
+
+                    @Html.ActionLink("Delete", "DeleteEvent", new { id = item.Event_ID })
+
+                </td>
+
+            </tr>
+}
+            </tbody>
+
+        </table>
+
+
+    </div>

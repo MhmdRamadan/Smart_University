@@ -1,28 +1,53 @@
 ﻿@model IEnumerable<MvcAuth.Models.RegisterCoursesTbl>
 
-@{
-    ViewBag.Title = "Courses";
+@{ ViewBag.Title = "Courses";
+                Layout = "~/Views/Shared/_LayoutStudent.cshtml";
 }
 
-<h2>Courses</h2>
 
-<p>
-    @Html.ActionLink("Register New Course", "RegisterCourse")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Course_ID)
-        </th>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-10 ml-5">
+            <div class="text-center">
+                <a href="@Url.Action("RegisterCourse","Students")" class="link btn btn-outline-dark btn-lg btn-block">Register New Course</a>
+            </div>
+            <br />
+            <div class="panel">
+                <h1 class="title text-center" style="color:#ca3d26">Courses</h1>
+                <br />
+                <div class="table-responsive">
+                    <table class="table table-striped ">
+                        <tr>
+                            <th>
+                                Course Name
+                            </th>
 
-    </tr>
+                        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CourseTbl.Course_Name)
-        </td>
-    </tr>
-}
+                       
+                        <tr>
+                            @if (Model.Count(a => a.IsApprove == true) == 0)
+                            {
+
+                                <td>
+                                    No Courses
+                                </td>
+                            }
+                            else
+                            {
+                                foreach (var item in Model)
+                                {
+
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CourseTbl.Course_Name)
+                                    </td>
+                                }
+                            }
 
 </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

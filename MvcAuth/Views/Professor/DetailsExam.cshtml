@@ -1,122 +1,261 @@
-﻿@model MvcAuth.Models.ExamTbl
-
-@{
-    ViewBag.Title = "DetailsExam";
+﻿@{
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>FCI | Lectures</title>
+    <meta name="description" content="" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="robots" content="all,follow" />
+    <link rel="stylesheet" href="~/Content/Admin/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Admin/vendor/font-awesome/css/all.min.css" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" />
+    <link rel="stylesheet" href="~/Content/Admin/css/style.css" id="theme-stylesheet" />
+    <link rel="shortcut icon" href="img/favicon.ico" />
+</head>
+<body>
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <nav class="side-navbar">
+                <div class="sidebar-header d-flex align-items-center">
+                    <div class="avatar">
 
-<h2>DetailsExam</h2>
+                        <img src="@Url.Action("RenderImage","Professor")"
+                             alt="thumbnail"
+                             class="img-fluid rounded-circle" />
+                    </div>
+                    <div class="title">
+                        <h1 class="h4">
+                            @Session["ProfessorName"]
+                        </h1>
+                        <p>
+                            Professor
+                            <br />
+                        </p>
+                    </div>
+                </div>
+                <span class="heading">Main</span>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="@Url.Action("Navigation","Professor")"> <i class="fad fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("FileUpload","Professor")"> <i class="fad fa-presentation"></i>Lectures</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("UploadVideo","Professor")"> <i class="fas fa-video"></i>Videos</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ActionQrCode","Admin")"><i class="fad fa-qrcode"></i>QR Code</a>
+                    </li>
+                    <li class="active">
+                        <a href="@Url.Action("ExamManagment","Professor")"> <i class="fas fa-graduation-cap"></i>Exams</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("QuestionsManagment","Professor")"> <i class="fas fa-graduation-cap"></i>Questions</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("CourseStudents","Professor")"> <i class="fas fa-user-graduate"></i>Students Courses</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ApproveCourses","Professor")"> <i class="fas fa-thumbs-up"></i>Approve requests</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Chat")"> <i class="fad fa-comments-alt"></i>Chat</a>
+                    </li>
+                </ul>
 
-<div>
-    <h4>ExamTbl</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Ex_ID)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ex_ID)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Prof_ID)
-        </dt>
+            </nav>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProfessorTbl.Prof_Name)
-        </dd>
+            <div class="content-inner">
+                <header class="page-header bg-dark">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center">
+                            <a id="toggle-btn" href="@Url.Action("Navigation")" class="menu-btn active">
+                                <span></span><span></span><span></span>
+                            </a>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ex_Name)
-        </dt>
+                            <a href="@Url.Action("Navigation")"
+                               class="navbar-brand d-none d-sm-inline-block text-white">
+                                <div class="brand-text d-none d-lg-inline-block">
+                                    <span>Smart</span><strong>University</strong>
+                                </div>
+                                <div class="brand-text d-none d-sm-inline-block d-lg-none">
+                                    <strong>FCI</strong>
+                                </div>
+                            </a>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ex_Name)
-        </dd>
+                            <a href="@Url.Action("LogOff","Account")" class="nav-link ml-auto logout text-light">
+                                <span class="d-none d-sm-inline">Logout</span><i class="fad fa-sign-out"></i>
+                            </a>
+                        </div>
+                    </div>
+                </header>
+                <header class="page-header">
+                    <div class="container-fluid">
+                        <h2 class="no-margin-bottom">Add Exam</h2>
+                    </div>
+                </header>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ex_Info)
-        </dt>
+                <section>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-6">
 
-        <dd>
-            @Html.DisplayFor(model => model.Ex_Info)
-        </dd>
+                            @model MvcAuth.Models.ExamTbl
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ex_Total)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ex_Total)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ex_Munite_Duration)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ex_Munite_Duration)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ex_Start_On)
-        </dt>
+                            <div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ex_Start_On)
-        </dd>
+                                <hr />
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        <label class="form-control-label">Exam id</label>
+                                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ex_End_On)
-        </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Ex_ID)
+                                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ex_End_On)
-        </dd>
+                                    <dt>
+                                        <label class="form-control-label">Professor name</label>
+                                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ex_Passing_Mark)
-        </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.ProfessorTbl.Prof_Name)
+                                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ex_Passing_Mark)
-        </dd>
+                                    <dt>
+                                        <label class="form-control-label">Exam name</label>
+                                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Course_ID)
-        </dt>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Ex_Name)
+                                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CourseTbl.Course_Name)
-        </dd>
-        <dt>
-            Stuatus Exam
-        </dt>
+                                    <dt>
+                                        <label class="form-control-label">Exam info</label>
+                                    </dt>
 
-        <dd>
-                @if(ViewBag.msg != null)
-                {
-                    <p class="active"> @ViewBag.msg</p>
-                }
-        </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Ex_Info)
+                                    </dd>
 
-        <dt>
-            Suatus for Students
-        </dt>
+                                    <dt>
+                                        <label class="form-control-label">Exam total degress</label>
+                                    </dt>
 
-        <dd>
-            @if (Model.IsShow == true)
-            {
-                <p class="text-success">Show</p>
-            }
-            else if (Model.IsShow == false)
-            {
-                <p class="text-danger">Hide</p>
-            }
-        </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Ex_Total)
+                                    </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Back to List", "ExamManagment")
-</p>
+                                    <dt>
+                                        <label class="form-control-label">Exam duration</label>
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Ex_Munite_Duration)
+                                    </dd>
+
+                                    <dt>
+                                        <label class="form-control-label">Start date</label>
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Ex_Start_On)
+                                    </dd>
+
+                                    <dt>
+                                        <label class="form-control-label">End date/label>
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Ex_End_On)
+                                    </dd>
+
+                                    <dt>
+                                        <label class="form-control-label">Passing mark</label>
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Ex_Passing_Mark)
+                                    </dd>
+
+                                    <dt>
+                                        <label class="form-control-label">Course id</label>
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.CourseTbl.Course_Name)
+                                    </dd>
+                                    <dt>
+                                        Exam status
+                                    </dt>
+
+                                    <dd>
+                                        @if (ViewBag.msg != null)
+                                        {
+                                            <p class="active"> @ViewBag.msg</p>
+                                        }
+                                    </dd>
+
+                                    <dt>
+                                        Student status
+                                    </dt>
+
+                                    <dd>
+                                        @if (Model.IsShow == true)
+                                        {
+                                            <p class="text-success">Show</p>
+                                        }
+                                        else if (Model.IsShow == false)
+                                        {
+                                            <p class="text-danger">Hide</p>
+                                        }
+                                    </dd>
+
+                                </dl>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="main-footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>F2021</p>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <p>
+
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/Admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/Admin/vendor/popper.js/popper.min.js"></script>
+    <script src="~/Content/Admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/Admin/js/front.js"></script>
+    <script src="~/Content/Admin/js/charts-home.js"></script>
+    <script src="~/Content/Admin/vendor/chart.js/Chart.min.js"></script>
+
+
+</body>
+</html>

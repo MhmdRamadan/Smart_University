@@ -16,7 +16,7 @@ namespace MvcAuth.Models
     {
         [Key]
         public int Ex_ID { get; set; }
-        [Required(ErrorMessage = "Place Insert Exam Name")]
+        [Required(ErrorMessage = "please Insert Exam Name")]
         [MinLength(4, ErrorMessage = "Should be more than 4 char")]
         [MaxLength(50, ErrorMessage = "Should be less than 50 char")]
         public string Ex_Name { get; set; }

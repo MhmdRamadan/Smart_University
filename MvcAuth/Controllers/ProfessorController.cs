@@ -7,8 +7,10 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using MvcAuth.Models;
-
+using static MvcAuth.Controllers.ManageController;
 namespace MvcAuth.Controllers
 {
     public class CourseTrue
@@ -251,6 +253,7 @@ namespace MvcAuth.Controllers
                           where d.Prof_ID == ProfId
                           select new { s.Course_ID, s.Course_Name };
             ViewBag.Courses = new SelectList(courses, "Course_ID", "Course_Name");
+           
             return View();
         }
         [HttpPost]
@@ -278,6 +281,7 @@ namespace MvcAuth.Controllers
                         examTbl.IsShow = false;
                         Db.ExamTbls.Add(examTbl);
                         Db.SaveChanges();
+                        TempData["Exam"] = " ";
                         return RedirectToAction("ExamManagment");
                     }
                     else
@@ -297,6 +301,7 @@ namespace MvcAuth.Controllers
                           where d.Prof_ID == ProfId
                           select new { s.Course_ID, s.Course_Name };
             ViewBag.Courses = new SelectList(courses, "Course_ID", "Course_Name");
+           
             return View(exam);
         }
         [HttpGet]
@@ -339,7 +344,10 @@ namespace MvcAuth.Controllers
             {
                 int ProfId = Convert.ToInt32(Session["ProfessorID"]);
                 var exam = Db.ExamTbls.FirstOrDefault(a => a.Ex_ID == id && a.Prof_ID == ProfId);
-                return View(exam);
+                Db.ExamTbls.Remove(exam);
+                Db.SaveChanges();
+                TempData["DeletedExam"] = " ";
+                return RedirectToAction("ExamManagment");
             }
         }
         [HttpPost]
@@ -403,6 +411,7 @@ namespace MvcAuth.Controllers
                         examTbl.Ex_Passing_Mark = exam.Ex_Passing_Mark;
                         examTbl.IsShow = exam.IsShow;
                         Db.SaveChanges();
+                        TempData["EditedExam"] = " ";
                         return RedirectToAction("ExamManagment");
                     }
                     else
@@ -478,6 +487,7 @@ namespace MvcAuth.Controllers
                     questionsTbl.Degree = questions.Degree;
                     Db.QuestionsTbls.Add(questionsTbl);
                     Db.SaveChanges();
+                    TempData["Question"] = " ";
                     return RedirectToAction("AddQuestion", "Professor");
                 }
                 else
@@ -514,7 +524,10 @@ namespace MvcAuth.Controllers
             {
                 int ProfId = Convert.ToInt32(Session["ProfessorID"]);
                 var Question = Db.QuestionsTbls.Single(a => a.Question_ID == id && a.ExamTbl.Prof_ID == ProfId);
-                return View(Question);
+                Db.QuestionsTbls.Remove(Question);
+                Db.SaveChanges();
+                TempData["DeletedQuestion"] = " ";
+                return RedirectToAction("QuestionsManagment");
             }
         }
         [HttpPost]
@@ -612,6 +625,7 @@ namespace MvcAuth.Controllers
                     Question.Correct_Choice = Correct;
                     Question.Degree = questions.Degree;
                     Db.SaveChanges();
+                    TempData["EditedQuestion"] = " ";
                     return RedirectToAction("QuestionsManagment", "Professor");
                 }
                 else
@@ -691,6 +705,107 @@ namespace MvcAuth.Controllers
             Db.SaveChanges();
             return RedirectToAction("ApproveCourses");
 
+        }
+        public ActionResult MyProfile()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult EditMyProfile()
+        {
+            int id = int.Parse(Session["ProfessorID"].ToString());
+            return View(Db.ProfessorTbls.SingleOrDefault(a => a.Prof_ID == id));
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditMyProfile(ProfessorTbl prof)
+        {
+            HttpPostedFileBase file = Request.Files["fileInput"];
+            int id = int.Parse(Session["ProfessorID"].ToString());
+            var user = Db.ProfessorTbls.SingleOrDefault(a => a.Prof_ID == id);
+            if (ModelState.IsValid)
+            {
+                user.Prof_Name = prof.Prof_Name;
+                if (file.ContentLength > 0)
+                {
+                    user.Prof_Image = ConvertToBytes(file);
+                }
+                var aspuser = Db.AspNetUsers.Single(a => a.Email == user.Prof_Email);
+                aspuser.FullName = prof.Prof_Name;
+                Db.SaveChanges();
+                Session["ProfessorName"] = user.Prof_Name;
+                return RedirectToAction("MyProfile", "Professor");
+
+            }
+            return View();
+        }
+        public byte[] ConvertToBytes(HttpPostedFileBase image)
+        {
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(image.InputStream);
+            imageBytes = reader.ReadBytes((int)image.ContentLength);
+            return imageBytes;
+        }
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var result = UserManager.ChangePassword(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+            int id = int.Parse(Session["ProfessorID"].ToString());
+            var userProf = Db.ProfessorTbls.SingleOrDefault(a => a.Prof_ID == id);
+            userProf.Prof_Pass = model.ConfirmPassword;
+            Db.SaveChanges();
+            if (result.Succeeded)
+            {
+                var user = UserManager.FindById(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    SignInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
+                }
+                return RedirectToAction("MyProfile", "Professor", new { Message = ManageMessageId.ChangePasswordSuccess });
+            }
+            AddErrors(result);
+            return View(model);
         }
     }
 }

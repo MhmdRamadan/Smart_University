@@ -1,0 +1,47 @@
+﻿@model MvcAuth.Models.StudentTbl
+@{ ViewBag.Title = "Edit My Profile"; Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+ }
+
+<section>
+    <div class="card mb-3" style="margin-top:30px">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="@Url.Action("RenderImage")" alt="" class="img-fluid" />
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">User Detials</h3>
+                    @using (Html.BeginForm("EditMyProfile", "Students", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+                    {
+        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(a => a.St_ID)
+                                        <div class="card-text">
+                                            <div class="form-group d-flex">
+                                                <label for="name"><strong>Name: </strong></label>
+                                                @Html.TextBoxFor(a => a.St_Name, new { @class = "form-control w-75 ml-2", id = "nameInput", name = "name" })
+                                                @Html.ValidationMessageFor(a => a.St_Name, "", new { @class = "text-danger" })
+                                            </div>
+                                            <br />
+                                        </div>
+                                                        <div class="card-text">
+                                                            <div class="form-group d-flex">
+                                                                <label for="email"><strong>Email:  </strong></label>
+                                                                @Html.TextBoxFor(a => a.St_Email, new { @class = "form-control w-75 ml-2", id = "emailInput", name = "email", @readonly = "readonly" })
+                                                            </div>
+                                                            <br />
+                                                        </div>
+                                                                        <div class="card-text">
+                                                                            <div class="form-group d-flex">
+                                                                                <label for="fileInput"><strong>Image: </strong></label>
+                                                                                <input type="file" name="fileInput" class="ml-2" id="fileInput" />
+                                                                            </div>
+                                                                            <br />
+                                                                        </div>
+
+                                                                                        <button class="btn btn-danger px-5 btn-block">Save</button>}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

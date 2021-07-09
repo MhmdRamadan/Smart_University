@@ -1,92 +1,229 @@
-﻿@model MvcAuth.Models.QuestionsTbl
-
-@{
-    ViewBag.Title = "DetailsQuestion";
+﻿@{
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>FCI | Lectures</title>
+    <meta name="description" content="" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="robots" content="all,follow" />
+    <link rel="stylesheet" href="~/Content/Admin/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Admin/vendor/font-awesome/css/all.min.css" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" />
+    <link rel="stylesheet" href="~/Content/Admin/css/style.css" id="theme-stylesheet" />
+    <link rel="shortcut icon" href="img/favicon.ico" />
+</head>
+<body>
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <nav class="side-navbar">
+                <div class="sidebar-header d-flex align-items-center">
+                    <div class="avatar">
 
-<h2>DetailsQuestion</h2>
-
-<div>
-    <h4>QuestionsTbl</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Ex_ID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ExamTbl.Ex_Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Question_ID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Question_ID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Question)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Question)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.First_Choice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.First_Choice)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Second_Choice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Second_Choice)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Third_Choice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Third_Choice)
-        </dd>
+                        <img src="@Url.Action("RenderImage","Professor")"
+                             alt="thumbnail"
+                             class="img-fluid rounded-circle" />
+                    </div>
+                    <div class="title">
+                        <h1 class="h4">
+                            @Session["ProfessorName"]
+                        </h1>
+                        <p>
+                            Professor
+                            <br />
+                        </p>
+                    </div>
+                </div>
+                <span class="heading">Main</span>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="@Url.Action("Navigation","Professor")"> <i class="fad fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("FileUpload","Professor")"> <i class="fad fa-presentation"></i>Lectures</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("UploadVideo","Professor")"> <i class="fas fa-video"></i>Videos</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ActionQrCode","Admin")"><i class="fad fa-qrcode"></i>QR Code</a>
+                    </li>
+                    <li >
+                        <a href="@Url.Action("ExamManagment","Professor")"> <i class="fas fa-graduation-cap"></i>Exams</a>
+                    </li>
+                    <li class="active">
+                        <a href="@Url.Action("QuestionsManagment","Professor")"> <i class="fas fa-graduation-cap"></i>Questions</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("CourseStudents","Professor")"> <i class="fas fa-user-graduate"></i>Students Courses</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ApproveCourses","Professor")"> <i class="fas fa-thumbs-up"></i>Approve requests</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Chat")"> <i class="fad fa-comments-alt"></i>Chat</a>
+                    </li>
+                </ul>
 
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fourth_Choice)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fourth_Choice)
-        </dd>
+            </nav>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Degree)
-        </dt>
+            <div class="content-inner">
+                <header class="page-header bg-dark">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center">
+                            <a id="toggle-btn" href="@Url.Action("Navigation")" class="menu-btn active">
+                                <span></span><span></span><span></span>
+                            </a>
 
-        <dd>
-            @Html.DisplayFor(model => model.Degree)
-        </dd>
+                            <a href="@Url.Action("Navigation")"
+                               class="navbar-brand d-none d-sm-inline-block text-white">
+                                <div class="brand-text d-none d-lg-inline-block">
+                                    <span>Smart</span><strong>University</strong>
+                                </div>
+                                <div class="brand-text d-none d-sm-inline-block d-lg-none">
+                                    <strong>FCI</strong>
+                                </div>
+                            </a>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Correct_Choice)
-        </dt>
+                            <a href="@Url.Action("LogOff","Account")" class="nav-link ml-auto logout text-light">
+                                <span class="d-none d-sm-inline">Logout</span><i class="fad fa-sign-out"></i>
+                            </a>
+                        </div>
+                    </div>
+                </header>
+                <header class="page-header">
+                    <div class="container-fluid">
+                        <h2 class="no-margin-bottom">Question details</h2>
+                    </div>
+                </header>
 
-        <dd class="text-success">
-            @Html.DisplayFor(model => model.Correct_Choice)
-        </dd>
+                <section>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-6">
+                            @model MvcAuth.Models.QuestionsTbl
 
-        
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Back to List", "QuestionsManagment")
-</p>
+
+                            <div>
+                                
+                               
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        <label class="text-center">Exam name</label>
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.ExamTbl.Ex_Name)
+                                    </dd>
+
+                                    <dt>
+                                        <label class="text-center">Question id</label>
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Question_ID)
+                                    </dd>
+
+                                    <dt>
+                                        <label class="text-center">Question</label>
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Question)
+                                    </dd>
+
+                                    <dt>
+                                        <label class="text-center">First choice</label>
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.First_Choice)
+                                    </dd>
+
+                                    <dt>
+                                        <label class="text-center">Second choice</label>
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Second_Choice)
+                                    </dd>
+
+                                    <dt>
+                                        <label class="text-center">Third choice</label>
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Third_Choice)
+                                    </dd>
+
+
+                                    <dt>
+                                        <label class="text-center">Fourth choice</label>
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Fourth_Choice)
+                                    </dd>
+
+                                    <dt>
+                                        <label class="text-center">Degree</label>
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Degree)
+                                    </dd>
+
+                                    <dt>
+                                        <label class="text-center">Correct choice</label>
+                                    </dt>
+
+                                    <dd class="text-success">
+                                        @Html.DisplayFor(model => model.Correct_Choice)
+                                    </dd>
+
+
+
+                                </dl>
+                            </div>
+                       
+
+
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="main-footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>F2021</p>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <p>
+
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/Admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/Admin/vendor/popper.js/popper.min.js"></script>
+    <script src="~/Content/Admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/Admin/js/front.js"></script>
+    <script src="~/Content/Admin/js/charts-home.js"></script>
+    <script src="~/Content/Admin/vendor/chart.js/Chart.min.js"></script>
+
+
+</body>
+</html>

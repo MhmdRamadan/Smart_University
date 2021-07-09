@@ -1,69 +1,66 @@
 ﻿@model IEnumerable<MvcAuth.Models.ExamTbl>
 @using MvcAuth.Models;
 
-@{
-    ViewBag.Title = "AvaliableExam";
-    UniversityDBEntities1 Db = new UniversityDBEntities1();
-}
+@{ ViewBag.Title = "AvaliableExam";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    UniversityDBEntities1 Db = new UniversityDBEntities1(); }
 
-<h2>Avaliable Exam</h2>
+<br />
 <br />
 <div class="container">
     @if (Model.Count() == 0)
     {
 
-        <p class="text-center text-muted" style="font-size:20px"> No Exams </p>
-    }
-    else
+<p class="text-center text-muted" style="font-size:20px"> No Exams </p> }
+else
+{
+
+foreach (var item in Model)
+{
+
+    var Questions = Db.QuestionsTbls.Where(a => a.Ex_ID == item.Ex_ID);
+    var Exam = Db.ExamTbls.Single(a => a.Ex_ID == item.Ex_ID);
+
+
+    int TotalDegQue = Questions.Sum(a => (int?)a.Degree) ?? 0;
+    int TotalDegExam = Exam.Ex_Total;
+    if (TotalDegQue == TotalDegExam)
     {
 
-        foreach (var item in Model)
+        if (item.Ex_End_On <= DateTime.Now)
         {
-
-            var Questions = Db.QuestionsTbls.Where(a => a.Ex_ID == item.Ex_ID);
-            var Exam = Db.ExamTbls.Single(a => a.Ex_ID == item.Ex_ID);
-
-
-            int TotalDegQue = Questions.Sum(a => (int?)a.Degree) ?? 0;
-            int TotalDegExam = Exam.Ex_Total;
-            if (TotalDegQue == TotalDegExam)
-            {
-
-                if (item.Ex_End_On <= DateTime.Now)
-                {
-                    <div class="panel panel-default text-center" style="float: left;width: 250px; margin:20px;">
-                        <div class="panel-heading text-info">
-                            <p style="font-size:15px">@Html.DisplayFor(modelItem => item.Ex_Name)</p>
-                        </div>
-                        <div class="panel-heading">
-                            <p class="text-success">  Non Avaliable  </p>
-                        </div>
-                    </div>
-                            }
-                            else
-                            {
-                                int idCurrentStudent = Convert.ToInt32(Session["StudentID"]);
-                                var Cousrse = Db.RegisterCoursesTbls.Where(a => a.IsApprove == true && a.St_ID == idCurrentStudent);
-                                if (Cousrse.SingleOrDefault(a => a.Course_ID == item.Course_ID) != null)
-                                {
-
-                        <div class="panel panel-default text-center" style="float: left;width: 250px; margin:20px;">
-                            <div class="panel-heading text-info">
-                                <p style="font-size:15px">@Html.DisplayFor(modelItem => item.Ex_Name)</p>
-                            </div>
-                            <div class="panel-heading">
-                                @Html.ActionLink("Start Exam", "StartExam", "Students", new { id = item.Ex_ID }, new { @class = "btn btn-custom" })
-
-                                <p class="text-success">  Avaliable  </p>
-                            </div>
-                        </div>
-                    }
-
-                }
-
-            }
+<div class="card text-center" style="float: left;width: 250px; margin:20px;">
+    <div class="card-header">
+        <p style="font-size:15px">@Html.DisplayFor(modelItem => item.Ex_Name)</p>
+    </div>
+    <div class="card-body">
+        @Html.ActionLink("Start Exam", "StartExam", "Students", new { id = item.Ex_ID }, new { @class = "btn btn-danger" })
+        <p class="text-bold">  Non Avaliable  </p>
+    </div>
+</div> }
+else
+{
+int idCurrentStudent = Convert.ToInt32(Session["StudentID"]);
+var Cousrse = Db.RegisterCoursesTbls.Where(a => a.IsApprove == true && a.St_ID == idCurrentStudent);
+if (Cousrse.SingleOrDefault(a => a.Course_ID == item.Course_ID) != null)
+{
 
 
-        }
-    }
+<div class="card text-center" style="float: left;width: 250px; margin:20px;">
+    <div class="card-header">
+        <p style="font-size:15px">@Html.DisplayFor(modelItem => item.Ex_Name)</p>
+    </div>
+    <div class="card-body">
+        @Html.ActionLink("Start Exam", "StartExam", "Students", new { id = item.Ex_ID }, new { @class = "btn btn-danger" })
+        <p class="text-success">  Avaliable  </p>
+    </div>
+</div>}
+
+}
+
+}
+
+
+}
+}
 </div>
